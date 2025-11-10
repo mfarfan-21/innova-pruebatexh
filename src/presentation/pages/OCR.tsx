@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Box, LinearProgress } from '@mui/material';
 import { useLanguage } from '../../application/services/useLanguage';
 import { ocrClient, type OCRDetailedResponse } from '../../infrastructure/adapters/ocrClient';
 import { LanguageSelector } from '../components/LanguageSelector';
@@ -27,6 +28,7 @@ export const OCR = () => {
   const [lastShotTime, setLastShotTime] = useState<string | null>(null);
   const [autoChangeEnabled, setAutoChangeEnabled] = useState(true);
   const [shotHistory, setShotHistory] = useState<ShotHistory[]>([]);
+  const [progress, setProgress] = useState<number>(0);
 
   // Cargar lista de imágenes disponibles al montar el componente
   useEffect(() => {
@@ -46,11 +48,32 @@ export const OCR = () => {
     loadAvailableImages();
   }, []);
 
-  // Cambio automático de imagen cada 20 segundos
+  // Cambio automático de imagen cada 20 segundos con barra de progreso
   useEffect(() => {
-    if (!autoChangeEnabled || availableImages.length === 0) return;
+    if (!autoChangeEnabled || availableImages.length === 0) {
+      setProgress(0);
+      return;
+    }
 
-    const interval = setInterval(() => {
+    const INTERVAL_DURATION = 20000; // 20 segundos
+    const UPDATE_INTERVAL = 100; // Actualizar cada 100ms
+    let elapsed = 0;
+
+    // Reset progress al inicio
+    setProgress(0);
+
+    const progressInterval = setInterval(() => {
+      elapsed += UPDATE_INTERVAL;
+      const newProgress = (elapsed / INTERVAL_DURATION) * 100;
+      
+      if (newProgress >= 100) {
+        setProgress(100);
+      } else {
+        setProgress(newProgress);
+      }
+    }, UPDATE_INTERVAL);
+
+    const changeInterval = setInterval(() => {
       setCurrentImageIndex((prev) => {
         const nextIndex = (prev + 1) % availableImages.length;
         console.log(`🔄 Cambio automático de imagen: ${availableImages[nextIndex]}`);
@@ -60,9 +83,15 @@ export const OCR = () => {
         setError(null);
         return nextIndex;
       });
-    }, 20000); // 20 segundos
+      // Reset progress después del cambio
+      elapsed = 0;
+      setProgress(0);
+    }, INTERVAL_DURATION);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(progressInterval);
+      clearInterval(changeInterval);
+    };
   }, [autoChangeEnabled, availableImages]);
 
   const handleShoot = async () => {
@@ -164,6 +193,33 @@ export const OCR = () => {
                 Cambio automático cada 20s
               </span>
             </label>
+            
+            {/* Barra de progreso */}
+            {autoChangeEnabled && availableImages.length > 0 && (
+              <Box sx={{ width: '100%', mt: 2 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 0.5 }}>
+                  <span style={{ fontSize: '0.875rem', color: '#666' }}>
+                    Próximo cambio en {Math.ceil((100 - progress) / 5)} segundos
+                  </span>
+                  <span style={{ fontSize: '0.875rem', color: '#009ece', fontWeight: 500 }}>
+                    {Math.round(progress)}%
+                  </span>
+                </Box>
+                <LinearProgress 
+                  variant="determinate" 
+                  value={progress} 
+                  sx={{
+                    height: 8,
+                    borderRadius: 4,
+                    backgroundColor: '#e0e0e0',
+                    '& .MuiLinearProgress-bar': {
+                      borderRadius: 4,
+                      backgroundColor: '#009ece',
+                    }
+                  }}
+                />
+              </Box>
+            )}
           </div>
         </div>
 
