@@ -1,6 +1,6 @@
 """
 FastAPI Server - Main Entry Point
-API con Supabase Auth + Chatbot + OCR - Arquitectura Hexagonal
+API con Supabase Auth + Chatbot + OCR 
 """
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware

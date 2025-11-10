@@ -151,7 +151,6 @@ describe('useOCRProcess', () => {
     };
 
     vi.mocked(ocrClient.recognizePlateDetailed).mockResolvedValue(mockResult);
-    vi.mocked(ocrClient.sendToExternalAPI).mockResolvedValue();
 
     const { result } = renderHook(() => useOCRProcess());
 
@@ -195,7 +194,6 @@ describe('useOCRProcess', () => {
     };
 
     vi.mocked(ocrClient.recognizePlateDetailed).mockResolvedValue(mockResult);
-    vi.mocked(ocrClient.sendToExternalAPI).mockResolvedValue();
 
     const { result } = renderHook(() => useOCRProcess());
 
@@ -266,7 +264,6 @@ describe('useOCRProcess', () => {
     };
 
     vi.mocked(ocrClient.recognizePlateDetailed).mockResolvedValue(mockResult);
-    vi.mocked(ocrClient.sendToExternalAPI).mockResolvedValue();
 
     await act(async () => {
       const promise = result.current.recognizePlate('success.jpg');
