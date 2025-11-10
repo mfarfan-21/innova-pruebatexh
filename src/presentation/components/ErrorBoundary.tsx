@@ -62,7 +62,7 @@ export class ErrorBoundary extends Component<Props, State> {
       return (
         <div className="error-boundary">
           <div className="error-boundary-card">
-            <div className="error-icon">⚠️</div>
+            <div className="error-icon">!</div>
             <h1 className="error-title">Oops! Algo salió mal</h1>
             <p className="error-message">
               {this.state.error?.message || 'Ha ocurrido un error inesperado'}

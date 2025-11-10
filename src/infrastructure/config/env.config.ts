@@ -36,7 +36,7 @@ function validateEnvVars(): void {
 
   if (missing.length > 0) {
     throw new Error(
-      `❌ Faltan variables de entorno requeridas:\n${missing.map(v => `  - ${v}`).join('\n')}\n\n` +
+      `ERROR: Faltan variables de entorno requeridas:\n${missing.map(v => `  - ${v}`).join('\n')}\n\n` +
       `Por favor, crea un archivo .env en la raíz del proyecto con:\n` +
       `${missing.map(v => `${v}=tu_valor_aqui`).join('\n')}`
     );

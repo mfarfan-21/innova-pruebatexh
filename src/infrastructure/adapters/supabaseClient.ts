@@ -5,8 +5,8 @@
 import { createClient } from '@supabase/supabase-js';
 import { ENV } from '../config/env.config';
 
-console.log(' Supabase Config:', {
-  url: `${ENV.supabaseUrl}`,
+console.log('Supabase Config:', {
+  url: ENV.supabaseUrl,
   key: `${ENV.supabaseAnonKey.substring(0, 20)}...`,
   env: import.meta.env.MODE,
 });

@@ -213,7 +213,7 @@ src/presentation/styles/
 <div class="animate-slideInRight">Desliza desde la derecha</div>
 ```
 
-## 🎯 Beneficios
+## Beneficios
 
 1. **Consistencia**: Todos los componentes usan los mismos valores
 2. **Mantenibilidad**: Cambiar un color actualiza toda la app
@@ -222,7 +222,7 @@ src/presentation/styles/
 5. **Performance**: Variables CSS nativas (no requiere preprocesador)
 6. **Documentación**: Nombres semánticos y autodocumentados
 
-## 🔧 Personalización
+## Personalización
 
 Para personalizar el tema, edita `/src/presentation/styles/variables.css`:
 
@@ -251,6 +251,18 @@ Los breakpoints recomendados:
 /* Desktop First */
 @media (min-width: 769px) { /* Desktop */ }
 @media (min-width: 1024px) { /* Desktop grande */ }
+```
+
+## Migración de Componentes Existentes
+
+1. Identifica valores hardcoded (colores, tamaños, espaciado)
+2. Busca la variable CSS equivalente
+3. Reemplaza el valor por `var(--nombre-variable)`
+
+4. Prueba el componente
+5. Ajusta si es necesario
+
+## Recursos
 ```
 
 ## 🚀 Migración de Componentes Existentes

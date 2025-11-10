@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const { data: { session: initialSession } } = await supabase.auth.getSession();
       
       if (initialSession?.user && isMounted) {
-        console.log('🔐 Initial session found:', initialSession.user.id);
+        console.log('Initial session found:', initialSession.user.id);
         const user = await buildUser(initialSession.user);
         
         if (!isMounted) return;

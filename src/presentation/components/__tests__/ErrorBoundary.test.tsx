@@ -146,7 +146,7 @@ describe('ErrorBoundary', () => {
     );
   });
 
-  it('debe mostrar emoji de advertencia', () => {
+  it('debe mostrar icono de advertencia', () => {
     // ACT
     const { getByText } = render(
       <ErrorBoundary>
@@ -154,7 +154,7 @@ describe('ErrorBoundary', () => {
       </ErrorBoundary>
     );
 
-    // ASSERT: Buscar el emoji (⚠️) en el documento
-    expect(getByText('⚠️')).toBeInTheDocument();
+    // ASSERT: Buscar el icono de advertencia (!) en el documento
+    expect(getByText('!')).toBeInTheDocument();
   });
 });

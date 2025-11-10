@@ -86,8 +86,8 @@ export const ocrClient = {
    */
   async sendToExternalAPI(data: ExternalAPIPayload): Promise<void> {
     try {
-      console.log('📡 Enviando a API externa:', EXTERNAL_API_URL);
-      console.log('📦 Payload:', JSON.stringify(data, null, 2));
+      console.log('Enviando a API externa:', EXTERNAL_API_URL);
+      console.log('Payload:', JSON.stringify(data, null, 2));
       
       // Simulación de envío a API externa (siempre fallará porque es ficticia)
       await fetch(EXTERNAL_API_URL, {
@@ -99,10 +99,10 @@ export const ocrClient = {
         body: JSON.stringify(data),
       }).catch(() => {
         // Esperado que falle, es una URL ficticia
-        console.log('✅ Intento de envío completado (URL ficticia)');
+        console.log('Intento de envío completado (URL ficticia)');
       });
     } catch (error) {
-      console.log('ℹ️ API externa no disponible (simulación)');
+      console.log('INFO: API externa no disponible (simulación)');
     }
   },
 };

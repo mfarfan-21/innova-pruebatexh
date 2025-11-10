@@ -126,10 +126,10 @@ export const OCR = () => {
       };
       setShotHistory(prev => [newShot, ...prev]); // Agregar al inicio
 
-      console.log('✅ Lectura completada:', result.plate_number);
+      console.log('Lectura completada:', result.plate_number);
     } catch (err) {
       setError(err instanceof Error ? err.message : t.ocrError);
-      console.error('❌ Error en lectura:', err);
+      console.error('Error en lectura:', err);
     } finally {
       setIsProcessing(false);
     }
