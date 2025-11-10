@@ -12,10 +12,8 @@
  * toda la aplicación se caiga. Es crítico asegurar que captura errores
  * correctamente y muestra una UI amigable al usuario.
  */
-
-import React from 'react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ErrorBoundary } from '../ErrorBoundary';
 
@@ -40,75 +38,75 @@ describe('ErrorBoundary', () => {
 
   it('debe renderizar children cuando no hay error', () => {
     // ACT
-    render(
+    const { getByText } = render(
       <ErrorBoundary>
         <div>Contenido normal</div>
       </ErrorBoundary>
     );
 
     // ASSERT
-    expect(screen.getByText('Contenido normal')).toBeInTheDocument();
+    expect(getByText('Contenido normal')).toBeInTheDocument();
   });
 
   it('debe capturar error y mostrar UI de fallback', () => {
     // ACT
-    render(
+    const { getByText, getAllByText } = render(
       <ErrorBoundary>
         <ThrowError shouldThrow={true} />
       </ErrorBoundary>
     );
 
     // ASSERT
-    expect(screen.getByText(/Algo salió mal/i)).toBeInTheDocument();
+    expect(getByText(/Algo salió mal/i)).toBeInTheDocument();
     // Usar getAllByText porque el mensaje aparece en múltiples lugares (mensaje + stack)
-    const errorMessages = screen.getAllByText(/Test error from component/i);
+    const errorMessages = getAllByText(/Test error from component/i);
     expect(errorMessages.length).toBeGreaterThan(0);
   });
 
   it('debe mostrar botón de reintentar', () => {
     // ACT
-    render(
+    const { getByRole } = render(
       <ErrorBoundary>
         <ThrowError shouldThrow={true} />
       </ErrorBoundary>
     );
 
     // ASSERT
-    expect(screen.getByRole('button', { name: /reintentar/i })).toBeInTheDocument();
+    expect(getByRole('button', { name: /reintentar/i })).toBeInTheDocument();
   });
 
   it('debe mostrar botón de ir al inicio', () => {
     // ACT
-    render(
+    const { getByRole } = render(
       <ErrorBoundary>
         <ThrowError shouldThrow={true} />
       </ErrorBoundary>
     );
 
     // ASSERT
-    expect(screen.getByRole('button', { name: /ir al inicio/i })).toBeInTheDocument();
+    expect(getByRole('button', { name: /ir al inicio/i })).toBeInTheDocument();
   });
 
   it('debe resetear el error al hacer click en reintentar', async () => {
     // ARRANGE
     const user = userEvent.setup();
     
-    render(
+    const { getByText, getByRole } = render(
       <ErrorBoundary>
         <ThrowError shouldThrow={true} />
       </ErrorBoundary>
     );
 
     // Verificar que está en estado de error
-    expect(screen.getByText(/Algo salió mal/i)).toBeInTheDocument();
+    expect(getByText(/Algo salió mal/i)).toBeInTheDocument();
 
     // ACT: Click en reintentar
-    const retryButton = screen.getByRole('button', { name: /reintentar/i });
+    const retryButton = getByRole('button', { name: /reintentar/i });
     await user.click(retryButton);
 
     // ASSERT: El botón de reintentar sigue visible (porque el error persiste)
     // Este test verifica que el ErrorBoundary intenta resetear y re-renderizar
-    expect(screen.getByText(/Algo salió mal/i)).toBeInTheDocument();
+    expect(getByText(/Algo salió mal/i)).toBeInTheDocument();
   });
 
   it('debe usar fallback personalizado si se provee', () => {
@@ -116,15 +114,15 @@ describe('ErrorBoundary', () => {
     const customFallback = <div>Custom Error UI</div>;
 
     // ACT
-    render(
+    const { getByText, queryByText } = render(
       <ErrorBoundary fallback={customFallback}>
         <ThrowError shouldThrow={true} />
       </ErrorBoundary>
     );
 
     // ASSERT
-    expect(screen.getByText('Custom Error UI')).toBeInTheDocument();
-    expect(screen.queryByText(/Algo salió mal/i)).not.toBeInTheDocument();
+    expect(getByText('Custom Error UI')).toBeInTheDocument();
+    expect(queryByText(/Algo salió mal/i)).not.toBeInTheDocument();
   });
 
   it('debe llamar callback onError si se provee', () => {
@@ -150,13 +148,13 @@ describe('ErrorBoundary', () => {
 
   it('debe mostrar emoji de advertencia', () => {
     // ACT
-    render(
+    const { getByText } = render(
       <ErrorBoundary>
         <ThrowError shouldThrow={true} />
       </ErrorBoundary>
     );
 
     // ASSERT: Buscar el emoji (⚠️) en el documento
-    expect(screen.getByText('⚠️')).toBeInTheDocument();
+    expect(getByText('⚠️')).toBeInTheDocument();
   });
 });

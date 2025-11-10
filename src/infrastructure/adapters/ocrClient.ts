@@ -9,7 +9,7 @@ import type {
   PlateImage,
   ExternalAPIPayload,
 } from '../../domain/types/ocr.types';
-import { API_BASE_URL, API_ENDPOINTS, API_CONFIG, EXTERNAL_API_URL, EXTERNAL_API_KEY } from '../config/api.config';
+import { API_BASE_URL, API_ENDPOINTS, EXTERNAL_API_URL, EXTERNAL_API_KEY } from '../config/api.config';
 
 // Re-exportar tipos para compatibilidad
 export type { OCRResponse, OCRDetailedResponse, PlateImage, ExternalAPIPayload };

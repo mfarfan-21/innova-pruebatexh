@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../application/services/useLanguage';
 import { ocrClient, type OCRDetailedResponse } from '../../infrastructure/adapters/ocrClient';
 import { LanguageSelector } from '../components/LanguageSelector';
-import InnovaLogo from '../../assets/logo/Inova-logo.svg';
 import './OCR.css';
 
 interface ShotHistory {

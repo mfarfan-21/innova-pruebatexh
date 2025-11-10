@@ -13,9 +13,23 @@
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { renderHook, waitFor, act } from '@testing-library/react';
+import { renderHook, act } from '@testing-library/react';
 import { useOCRImages } from '../useOCRImages';
 import { ocrClient } from '@/infrastructure/adapters/ocrClient';
+
+// Helper para esperar condiciones async
+const waitFor = async (callback: () => void, timeout = 3000) => {
+  const startTime = Date.now();
+  while (Date.now() - startTime < timeout) {
+    try {
+      callback();
+      return;
+    } catch {
+      await new Promise(resolve => setTimeout(resolve, 50));
+    }
+  }
+  callback(); // Último intento que lanzará el error si falla
+};
 
 // Mock del ocrClient
 vi.mock('@/infrastructure/adapters/ocrClient', () => ({

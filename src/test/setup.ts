@@ -2,7 +2,7 @@
  * Setup global para testing
  * Configuración de Testing Library y mocks globales
  */
-import { expect, afterEach, vi } from 'vitest';
+import { afterEach, vi } from 'vitest';
 import { cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/vitest';
 
