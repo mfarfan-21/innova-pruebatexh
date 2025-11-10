@@ -31,7 +31,13 @@ export const Login = () => {
   if (isLoading) {
     return (
       <div className="login-container">
-        <div className="login-loading">Loading...</div>
+        <div className="login-loading-state">
+          <div className="loading-logo-container">
+            <img src={InnovaLogo} alt="INNOVA" className="loading-logo" />
+            <div className="loading-spinner"></div>
+          </div>
+          <p className="loading-text">{t.loading || 'Cargando...'}</p>
+        </div>
       </div>
     );
   }

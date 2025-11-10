@@ -5,6 +5,7 @@
 
 .login-container {
   min-height: 100vh;
+  height: 100vh; /* Forzar altura completa */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,10 +46,89 @@
   border-radius: var(--radius-full);
 }
 
-.login-loading {
-  color: white;
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-light);
+/* ========== LOADING STATE ========== */
+
+.login-loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  animation: fadeIn 0.3s var(--ease-out);
+}
+
+.loading-logo-container {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-logo {
+  width: 140px;
+  height: auto;
+  z-index: 2;
+  position: relative;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.loading-spinner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid transparent;
+  border-top-color: var(--color-innova-cyan);
+  border-right-color: var(--color-innova-navy);
+  border-radius: var(--radius-full);
+  animation: spin 1.5s linear infinite;
+}
+
+.loading-text {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-700);
+  margin: 0;
+  animation: fadeInOut 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* ========== LOGIN CARD ========== */
@@ -207,21 +287,102 @@
 /* ========== RESPONSIVE ========== */
 
 @media (max-width: 768px) {
+  .login-container {
+    padding: var(--spacing-base);
+    height: 100vh; /* Móvil: altura fija 100vh */
+    min-height: auto; /* Evitar scroll innecesario */
+  }
+
   .login-language-selector {
     top: var(--spacing-base);
     right: var(--spacing-base);
   }
 
   .login-card {
-    padding: var(--spacing-xl) var(--spacing-lg);
+    padding: var(--spacing-lg) var(--spacing-base);
+    max-height: calc(100vh - 2rem); /* Permitir scroll interno si es necesario */
+    overflow-y: auto;
   }
 
   .login-logo {
-    width: 140px;
+    width: 120px;
+    margin-bottom: var(--spacing-base);
+  }
+
+  .login-icon {
+    margin-bottom: var(--spacing-base);
+  }
+
+  .login-icon svg {
+    font-size: 48px;
   }
   
   .login-title {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .form-group {
+    gap: var(--spacing-xs);
+  }
+
+  .form-group label {
+    font-size: var(--font-size-sm);
+  }
+
+  .form-group input {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .login-form {
+    gap: var(--spacing-base);
+  }
+
+  /* Loading state móvil */
+  .loading-logo-container {
+    width: 140px;
+    height: 140px;
+  }
+
+  .loading-logo {
+    width: 100px;
+  }
+
+  .loading-text {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: var(--spacing-sm);
+  }
+
+  .login-card {
+    padding: var(--spacing-base);
+    border-radius: var(--radius-2xl);
+  }
+
+  .login-logo {
+    width: 100px;
+  }
+
+  .login-icon svg {
+    font-size: 40px;
+  }
+
+  .login-title {
+    font-size: var(--font-size-lg);
+  }
+
+  /* Loading state móvil pequeño */
+  .loading-logo-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .loading-logo {
+    width: 80px;
   }
 }
 
