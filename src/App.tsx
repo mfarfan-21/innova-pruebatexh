@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Home } from './presentation/pages/Home';
 import { Login } from './presentation/pages/Login';
 import { OCR } from './presentation/pages/OCR';
+import { Chatbot } from './presentation/pages/Chatbot';
 import { AuthProvider, useAuth } from './application/services/AuthContext';
 import { LanguageProvider } from './application/services/LanguageContext';
 import { ErrorBoundary } from './presentation/components/ErrorBoundary';
@@ -59,6 +60,16 @@ function AppRoutes() {
             <ProtectedRoute>
               <ErrorBoundary>
                 <OCR />
+              </ErrorBoundary>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/chatbot"
+          element={
+            <ProtectedRoute>
+              <ErrorBoundary>
+                <Chatbot />
               </ErrorBoundary>
             </ProtectedRoute>
           }

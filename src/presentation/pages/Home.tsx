@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../application/services/useLanguage';
 import { useAuth } from '../../application/services/AuthContext';
@@ -9,7 +8,6 @@ import SmartToyIcon from '@mui/icons-material/SmartToy';
 import ChatIcon from '@mui/icons-material/Chat';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import InnovaLogo from '../../assets/logo/Inova-logo.svg';
-import { ChatbotPopup } from '../components/ChatbotPopup';
 import { LanguageSelector } from '../components/LanguageSelector';
 import './Home.css';
 
@@ -17,7 +15,6 @@ export const Home = () => {
   const { t, currentLanguage } = useLanguage();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const [chatbotOpen, setChatbotOpen] = useState(false);
 
   const handleLogout = async () => {
     await logout();
@@ -109,7 +106,7 @@ export const Home = () => {
                     variant="contained"
                     size="large"
                     startIcon={<ChatIcon />}
-                    onClick={() => setChatbotOpen(true)}
+                    onClick={() => navigate('/chatbot')}
                     sx={{
                       background: '#1c3967', /* Azul marino INNOVA */
                       px: 4,
@@ -189,16 +186,6 @@ export const Home = () => {
           </Box>
         </Box>
       </div>
-
-      {/* Chatbot Popup */}
-      {user && (
-        <ChatbotPopup
-          open={chatbotOpen}
-          onClose={() => setChatbotOpen(false)}
-          currentLanguage={currentLanguage}
-          userId={user.id}
-        />
-      )}
     </div>
   );
 };
