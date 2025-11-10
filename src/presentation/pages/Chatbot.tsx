@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, TextField, Button, Paper, Typography, Chip, IconButton } from '@mui/material';
+import { TextField, Button, Paper, Typography, Chip, IconButton } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import PersonIcon from '@mui/icons-material/Person';
@@ -242,27 +242,6 @@ export const Chatbot = () => {
                         {msg.role === 'user' && <PersonIcon className="message-icon" />}
                       </Paper>
                     ))}
-                    
-                    {/* Opciones sugeridas */}
-                    {messages.length === 1 && messages[0].role === 'assistant' && (
-                      <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', justifyContent: 'center', mt: 2 }}>
-                        <Chip
-                          label={t.chatbotOption1}
-                          onClick={() => handleSuggestedOption(t.chatbotOption1)}
-                          className="suggested-chip"
-                        />
-                        <Chip
-                          label={t.chatbotOption2}
-                          onClick={() => handleSuggestedOption(t.chatbotOption2)}
-                          className="suggested-chip"
-                        />
-                        <Chip
-                          label={t.chatbotOption3}
-                          onClick={() => handleSuggestedOption(t.chatbotOption3)}
-                          className="suggested-chip"
-                        />
-                      </Box>
-                    )}
                   </>
                 )}
                 
@@ -280,6 +259,30 @@ export const Chatbot = () => {
                 
                 <div ref={messagesEndRef} />
               </div>
+
+              {/* Opciones sugeridas - Siempre visibles cuando hay conversación */}
+              {selectedConvId && (
+                <div className="suggested-questions-bar">
+                  <Chip
+                    label={t.chatbotOption1}
+                    onClick={() => handleSuggestedOption(t.chatbotOption1)}
+                    className="suggested-chip"
+                    size="small"
+                  />
+                  <Chip
+                    label={t.chatbotOption2}
+                    onClick={() => handleSuggestedOption(t.chatbotOption2)}
+                    className="suggested-chip"
+                    size="small"
+                  />
+                  <Chip
+                    label={t.chatbotOption3}
+                    onClick={() => handleSuggestedOption(t.chatbotOption3)}
+                    className="suggested-chip"
+                    size="small"
+                  />
+                </div>
+              )}
 
               {/* Input area */}
               <div className="chatbot-input-area">

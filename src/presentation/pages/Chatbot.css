@@ -305,6 +305,36 @@
   transform: scale(1.02);
 }
 
+/* Barra de preguntas sugeridas (siempre visible) */
+.suggested-questions-bar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  background: #fafafa;
+  border-top: 1px solid #e5e5e7;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: #d2d2d7 transparent;
+}
+
+.suggested-questions-bar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.suggested-questions-bar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.suggested-questions-bar::-webkit-scrollbar-thumb {
+  background: #d2d2d7;
+  border-radius: 2px;
+}
+
+.suggested-questions-bar .suggested-chip {
+  flex-shrink: 0;
+}
+
 /* ========== INPUT AREA ========== */
 
 .chatbot-input-area {
@@ -478,6 +508,15 @@
 
   .chatbot-messages {
     padding: var(--spacing-base);
+  }
+
+  .suggested-questions-bar {
+    padding: 8px 12px;
+    gap: 6px;
+  }
+
+  .suggested-questions-bar .suggested-chip {
+    font-size: 0.8125rem !important;
   }
 
   .message-bubble {
