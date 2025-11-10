@@ -531,11 +531,19 @@
     padding: var(--spacing-base);
     flex: 1;
     overflow-y: auto;
+    padding-bottom: 140px; /* Espacio para input fijo + suggested chips */
   }
 
   .suggested-questions-bar {
     padding: 8px 12px;
     gap: 6px;
+    position: fixed;
+    bottom: 60px; /* Altura del input */
+    left: 0;
+    right: 0;
+    background: #fafafa;
+    border-top: 1px solid #e5e5e7;
+    z-index: 10;
   }
 
   .suggested-questions-bar .suggested-chip {
@@ -558,6 +566,13 @@
   .chatbot-input-area {
     padding: var(--spacing-base);
     gap: var(--spacing-sm);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #e5e5e7;
+    z-index: 10;
   }
 
   .chatbot-send-button {
