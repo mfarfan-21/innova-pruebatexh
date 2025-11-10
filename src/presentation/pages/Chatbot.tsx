@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, TextField, Button, Paper, Typography, Chip } from '@mui/material';
+import { Box, TextField, Button, Paper, Typography, Chip, IconButton } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import PersonIcon from '@mui/icons-material/Person';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import { useLanguage } from '../../application/services/useLanguage';
 import { useAuth } from '../../application/services/AuthContext';
 import { chatbotClient } from '../../infrastructure/adapters/chatbotClient';
@@ -23,6 +25,7 @@ export const Chatbot = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Cargar conversaciones al montar
   useEffect(() => {
@@ -159,9 +162,18 @@ export const Chatbot = () => {
     <div className="chatbot-container">
       {/* Fixed header */}
       <div className="chatbot-fixed-header">
-        <button onClick={() => navigate('/')} className="back-button">
-          ← {t.welcome}
-        </button>
+        <div className="header-left">
+          <IconButton 
+            className="mobile-menu-button" 
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            size="small"
+          >
+            <MenuIcon />
+          </IconButton>
+          <button onClick={() => navigate('/')} className="back-button">
+            ← {t.welcome}
+          </button>
+        </div>
         
         <div className="chatbot-language-selector">
           <LanguageSelector />
@@ -177,11 +189,23 @@ export const Chatbot = () => {
 
           <div className="chatbot-main-layout">
             {/* Sidebar: Historial de conversaciones */}
-            <div className="chatbot-sidebar">
+            <div className={`chatbot-sidebar ${sidebarOpen ? 'open' : ''}`}>
+              {sidebarOpen && (
+                <IconButton 
+                  className="close-sidebar-button"
+                  onClick={() => setSidebarOpen(false)}
+                  size="small"
+                >
+                  <CloseIcon />
+                </IconButton>
+              )}
               <ConversationList
                 conversations={conversations}
                 selectedId={selectedConvId}
-                onSelect={setSelectedConvId}
+                onSelect={(id) => {
+                  setSelectedConvId(id);
+                  setSidebarOpen(false);
+                }}
                 onNew={createNewConversation}
                 onDelete={deleteConversation}
               />
