@@ -103,9 +103,15 @@
   flex-direction: column;
   background: white;
   border-right: 0.5px solid rgba(0, 0, 0, 0.1);
-  padding: var(--spacing-lg) 0;
+  padding: 0;
   overflow: hidden;
   position: relative;
+  box-sizing: border-box;
+}
+
+.chatbot-sidebar > * {
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .close-sidebar-button {
