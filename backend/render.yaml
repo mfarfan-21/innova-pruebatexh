@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: innova-backend
+    runtime: python
+    buildCommand: "pip install -r requirements.txt && cd assets && gunzip -k plates.dat.gz && cd .."
+    startCommand: "cd src && python3 main.py"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
