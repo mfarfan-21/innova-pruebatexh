@@ -54,6 +54,11 @@
   z-index: var(--z-dropdown);
 }
 
+/* Botón flotante de menú (oculto en desktop) */
+.mobile-menu-fab {
+  display: none;
+}
+
 /* ========== CONTENT ========== */
 
 .chatbot-content {
@@ -166,14 +171,14 @@
 
 .message-bubble {
   padding: 0;
-  max-width: 100%;
+  margin: 0;
   border-radius: 0;
   display: flex;
   gap: var(--spacing-md);
   align-items: flex-start;
   animation: slideUp 0.3s var(--ease-out);
   background: transparent;
-  box-shadow: none;
+  box-shadow: none !important;
   border: none;
 }
 
@@ -390,20 +395,38 @@
 @media (max-width: 768px) {
   .chatbot-container {
     padding: 0;
+    padding-bottom: 60px; /* Espacio para el botón de menú */
   }
 
   .chatbot-fixed-header {
     padding: 0 1rem;
     height: 3rem;
+    flex-direction: column;
+    height: auto;
+    padding: 0.5rem 1rem;
+  }
+
+  .header-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .mobile-menu-button {
+    display: none !important; /* Mover abajo */
+  }
+
+  .chatbot-language-selector {
+    margin-top: 0.5rem;
+    align-self: flex-end;
   }
 
   .chatbot-content {
-    padding-top: 3rem;
+    padding-top: 4.5rem; /* Ajustar por header más alto */
   }
 
   .chatbot-card {
     padding: 0;
-    height: calc(100vh - 3rem);
+    height: calc(100vh - 4.5rem - 60px); /* Header + botón inferior */
   }
 
   .chatbot-main-layout {
@@ -414,7 +437,7 @@
   .chatbot-sidebar {
     position: fixed;
     left: -100%;
-    top: 3rem;
+    top: 4.5rem;
     bottom: 0;
     width: 280px;
     z-index: 999;
@@ -500,12 +523,49 @@
   .sidebar-overlay.open {
     display: block;
   }
+
+  /* Botón flotante de menú en la parte inferior */
+  .mobile-menu-fab {
+    display: flex;
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: white;
+    border: 1px solid #e5e5e7;
+    border-radius: 24px;
+    padding: 12px 24px;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-menu-fab:active {
+    transform: translateX(-50%) scale(0.95);
+  }
+
+  .mobile-menu-fab-icon {
+    color: #1c3967;
+  }
+
+  .mobile-menu-fab-text {
+    color: #1c3967;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
 }
 
 /* Desktop: ocultar mobile controls */
 @media (min-width: 769px) {
   .mobile-menu-button {
     display: none;
+  }
+
+  .mobile-menu-fab {
+    display: none !important;
   }
 
   .sidebar-overlay {

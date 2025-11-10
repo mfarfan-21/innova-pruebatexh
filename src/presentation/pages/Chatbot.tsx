@@ -163,13 +163,6 @@ export const Chatbot = () => {
       {/* Fixed header */}
       <div className="chatbot-fixed-header">
         <div className="header-left">
-          <IconButton 
-            className="mobile-menu-button" 
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            size="small"
-          >
-            <MenuIcon />
-          </IconButton>
           <button onClick={() => navigate('/')} className="back-button">
             ← {t.welcome}
           </button>
@@ -179,6 +172,15 @@ export const Chatbot = () => {
           <LanguageSelector />
         </div>
       </div>
+
+      {/* Botón flotante de menú (móvil) */}
+      <button 
+        className="mobile-menu-fab" 
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+      >
+        <MenuIcon className="mobile-menu-fab-icon" fontSize="small" />
+        <span className="mobile-menu-fab-text">Historial</span>
+      </button>
 
       <div className="chatbot-content">
         <div className="chatbot-card">
