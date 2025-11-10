@@ -47,7 +47,6 @@
   "ocrDetailsCharacters": "Caràcters",
   "ocrDetailsValidation": "Validació",
   "ocrDetailsTimestamp": "Data i hora",
-  "ocrDetailsExternalAPI": "API Externa",
   "ocrValidationValid": "Vàlida",
   "ocrValidationInvalid": "No vàlida",
   "loading": "Carregant..."

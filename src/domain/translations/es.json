@@ -47,7 +47,6 @@
   "ocrDetailsCharacters": "Caracteres",
   "ocrDetailsValidation": "Validación",
   "ocrDetailsTimestamp": "Fecha y hora",
-  "ocrDetailsExternalAPI": "API Externa",
   "ocrValidationValid": "Válida",
   "ocrValidationInvalid": "Inválida",
   "loading": "Cargando..."

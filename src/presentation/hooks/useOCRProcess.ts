@@ -39,14 +39,6 @@ export const useOCRProcess = (): UseOCRProcessReturn => {
       setDetailedResult(result);
       setLastShotTime(timestamp);
 
-      // Enviar a API externa
-      await ocrClient.sendToExternalAPI({
-        plate_number: result.plate_number,
-        image_name: result.image_name,
-        timestamp: timestamp,
-        coordinates: result.coordinates,
-      });
-
       return result;
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Error processing image';

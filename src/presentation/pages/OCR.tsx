@@ -126,14 +126,6 @@ export const OCR = () => {
       };
       setShotHistory(prev => [newShot, ...prev]); // Agregar al inicio
 
-      // Enviar a API externa ficticia
-      await ocrClient.sendToExternalAPI({
-        plate_number: result.plate_number,
-        image_name: result.image_name,
-        timestamp: timestamp,
-        coordinates: result.coordinates,
-      });
-
       console.log('✅ Lectura completada:', result.plate_number);
     } catch (err) {
       setError(err instanceof Error ? err.message : t.ocrError);
@@ -313,17 +305,6 @@ export const OCR = () => {
                         </div>
                       </div>
                     )}
-                    <div className="apple-table-row">
-                      <div className="apple-table-cell apple-table-header">{t.ocrDetailsExternalAPI}</div>
-                      <div className="apple-table-cell">
-                        <button 
-                          className="api-link-button"
-                          onClick={() => window.open('https://external-api.example.com', '_blank')}
-                        >
-                          📋 external-api.example.com
-                        </button>
-                      </div>
-                    </div>
                   </div>
                 </div>
               ) : (
