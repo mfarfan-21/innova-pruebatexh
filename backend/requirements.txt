@@ -17,3 +17,6 @@ fastapi-cors==0.0.6
 
 # HTTP Client (compatible con supabase 2.10.0)
 httpx>=0.26,<0.28
+
+# Cloudinary SDK
+cloudinary==1.41.0
