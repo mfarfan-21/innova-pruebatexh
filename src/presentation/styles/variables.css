@@ -178,6 +178,8 @@
   --gradient-subtle: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-gray-100) 100%);
   --gradient-blue: linear-gradient(135deg, var(--color-blue-gradient-start) 0%, var(--color-blue-gradient-end) 100%);
   --gradient-overlay: linear-gradient(to top, rgba(29, 29, 31, 0.92), rgba(29, 29, 31, 0.4) 60%, transparent);
+  --gradient-innova: linear-gradient(135deg, var(--color-innova-cyan) 0%, var(--color-innova-navy) 100%);
+  --gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   
   /* ========== COMPONENTES ESPECÍFICOS ========== */
   

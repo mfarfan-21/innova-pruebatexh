@@ -10,9 +10,9 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background: #f5f5f7;
+  background: var(--color-gray-100);
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: var(--font-primary);
   position: relative;
 }
 
@@ -26,22 +26,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
-  background: white;
-  border-bottom: 1px solid #e5e5e7;
+  padding: 0 var(--spacing-xl);
+  background: var(--bg-primary);
+  border-bottom: var(--border-thin) solid var(--color-gray-200);
   z-index: var(--z-header);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: var(--shadow-xs);
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--spacing-md);
 }
 
 .mobile-menu-button {
   display: none;
-  color: #1c3967;
+  color: var(--color-innova-navy);
 }
 
 @media (max-width: 768px) {
@@ -178,11 +178,11 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #86868b;
-  font-size: 0.9375rem;
+  color: var(--color-gray-400);
+  font-size: var(--font-size-base);
 }
 
-.message-bubble {
+.message-bubble.MuiCard-root {
   padding: 0;
   margin: 0;
   border-radius: 0;
@@ -191,7 +191,7 @@
   align-items: flex-start;
   animation: slideUp 0.3s var(--ease-out);
   background: transparent;
-  box-shadow: none !important;
+  box-shadow: none;
   border: none;
 }
 
@@ -206,23 +206,23 @@
 .message-avatar {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 18px;
-  margin-top: 4px;
+  font-size: var(--font-size-lg);
+  margin-top: var(--spacing-xs);
 }
 
 .message-avatar.user-avatar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: var(--gradient-purple);
+  color: var(--bg-primary);
 }
 
 .message-avatar.assistant-avatar {
-  background: linear-gradient(135deg, #009ece 0%, #1c3967 100%);
-  color: white;
+  background: var(--gradient-innova);
+  color: var(--bg-primary);
 }
 
 .message-content-wrapper {
@@ -233,24 +233,24 @@
 .message-content {
   white-space: pre-wrap;
   word-wrap: break-word;
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  color: #1d1d1f;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-gray-900);
   padding: var(--spacing-md) var(--spacing-lg);
-  border-radius: 18px;
+  border-radius: var(--radius-2xl);
   margin: 0;
 }
 
 .message-bubble.user .message-content {
-  background: #007aff;
-  color: white;
-  border-bottom-right-radius: 4px;
+  background: var(--color-blue-primary);
+  color: var(--bg-primary);
+  border-bottom-right-radius: var(--radius-sm);
 }
 
 .message-bubble.assistant .message-content {
-  background: #f2f2f7;
-  color: #1d1d1f;
-  border-bottom-left-radius: 4px;
+  background: var(--color-gray-100);
+  color: var(--color-gray-900);
+  border-bottom-left-radius: var(--radius-sm);
 }
 
 .message-icon {
@@ -261,20 +261,20 @@
 
 .typing-indicator {
   display: flex;
-  gap: 0.375rem;
+  gap: var(--spacing-xs);
   align-items: center;
   padding: var(--spacing-md) var(--spacing-lg);
-  background: #f2f2f7;
-  border-radius: 18px;
-  border-bottom-left-radius: 4px;
+  background: var(--color-gray-100);
+  border-radius: var(--radius-2xl);
+  border-bottom-left-radius: var(--radius-sm);
   width: fit-content;
 }
 
 .typing-indicator span {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
-  background-color: #86868b;
+  border-radius: var(--radius-full);
+  background-color: var(--color-gray-400);
   animation: bounce 1.4s infinite ease-in-out both;
 }
 
@@ -303,32 +303,32 @@
 
 /* ========== SUGGESTED CHIPS ========== */
 
-.suggested-chip {
-  background-color: #f2f2f7 !important;
-  color: #007aff !important;
+.suggested-chip.MuiChip-root {
+  background-color: var(--color-gray-100);
+  color: var(--color-blue-primary);
   cursor: pointer;
-  transition: all 0.2s ease !important;
-  border: 0.5px solid rgba(0, 0, 0, 0.04) !important;
-  font-size: 0.875rem !important;
-  font-weight: 500 !important;
+  transition: all var(--transition-fast) var(--ease-base);
+  border: var(--border-thin) solid var(--color-gray-200);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
 }
 
-.suggested-chip:hover {
-  background-color: #e8e8ed !important;
+.suggested-chip.MuiChip-root:hover {
+  background-color: var(--color-gray-200);
   transform: scale(1.02);
 }
 
 /* Barra de preguntas sugeridas (siempre visible) */
 .suggested-questions-bar {
   display: flex;
-  gap: 8px;
-  padding: 12px 16px;
-  background: #fafafa;
-  border-top: 1px solid #e5e5e7;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-base);
+  background: var(--color-gray-50);
+  border-top: var(--border-thin) solid var(--color-gray-200);
   overflow-x: auto;
   white-space: nowrap;
   scrollbar-width: thin;
-  scrollbar-color: #d2d2d7 transparent;
+  scrollbar-color: var(--color-gray-300) transparent;
 }
 
 .suggested-questions-bar::-webkit-scrollbar {
@@ -340,8 +340,8 @@
 }
 
 .suggested-questions-bar::-webkit-scrollbar-thumb {
-  background: #d2d2d7;
-  border-radius: 2px;
+  background: var(--color-gray-300);
+  border-radius: var(--radius-sm);
 }
 
 .suggested-questions-bar .suggested-chip {
@@ -354,8 +354,8 @@
   display: flex;
   gap: var(--spacing-sm);
   padding: var(--spacing-lg) var(--spacing-xl);
-  border-top: 0.5px solid rgba(0, 0, 0, 0.1);
-  background: white;
+  border-top: var(--border-thin) solid var(--color-gray-200);
+  background: var(--bg-primary);
   border-radius: 0;
   align-items: flex-end;
 }
@@ -365,9 +365,9 @@
 }
 
 .chatbot-input .MuiOutlinedInput-root {
-  background: #f2f2f7;
-  border-radius: 20px;
-  font-size: 0.9375rem;
+  background: var(--color-gray-100);
+  border-radius: var(--radius-2xl);
+  font-size: var(--font-size-base);
   border: none;
 }
 
@@ -380,31 +380,31 @@
 }
 
 .chatbot-input .MuiOutlinedInput-root.Mui-focused fieldset {
-  border: 1px solid #007aff;
+  border: var(--border-thin) solid var(--color-blue-primary);
 }
 
 .chatbot-input .MuiOutlinedInput-input {
-  padding: 10px 16px;
+  padding: var(--spacing-sm) var(--spacing-base);
 }
 
-.chatbot-send-button {
-  background-color: #007aff !important;
-  min-width: 44px !important;
-  height: 44px !important;
-  border-radius: 50% !important;
-  padding: 0 !important;
-  transition: all 0.2s ease !important;
-  box-shadow: none !important;
+.chatbot-send-button.MuiIconButton-root {
+  background-color: var(--color-blue-primary);
+  min-width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  padding: 0;
+  transition: all var(--transition-fast) var(--ease-base);
+  box-shadow: none;
 }
 
-.chatbot-send-button:hover {
-  background-color: #0051d5 !important;
+.chatbot-send-button.MuiIconButton-root:hover {
+  background-color: var(--color-blue-hover);
   transform: scale(1.05);
 }
 
-.chatbot-send-button:disabled {
-  background-color: #e8e8ed !important;
-  opacity: 0.5;
+.chatbot-send-button.MuiIconButton-root:disabled {
+  background-color: var(--color-gray-200);
+  opacity: var(--opacity-disabled);
 }
 
 .chatbot-send-button .MuiSvgIcon-root {
@@ -452,9 +452,9 @@
   }
 
   .back-button {
-    display: flex !important;
+    display: flex;
     align-items: center;
-    gap: 4px;
+    gap: var(--spacing-xs);
   }
 
   .chatbot-language-selector {
@@ -475,17 +475,17 @@
   .mobile-history-submenu {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 16px;
-    background: white;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-base);
+    background: var(--bg-primary);
     border: none;
-    border-bottom: 1px solid #e5e5e7;
+    border-bottom: var(--border-thin) solid var(--color-gray-200);
     width: 100%;
-    color: #1c3967;
-    font-size: 0.9375rem;
-    font-weight: 500;
+    color: var(--color-innova-navy);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: background var(--transition-fast) var(--ease-base);
     position: fixed;
     top: 3.5rem;
     left: 0;
@@ -494,7 +494,7 @@
   }
 
   .mobile-history-submenu:active {
-    background: #f5f5f7;
+    background: var(--color-gray-100);
   }
 
   .chatbot-main-layout {
@@ -510,8 +510,8 @@
     bottom: 0;
     width: 280px;
     z-index: 999;
-    transition: left 0.3s ease;
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    transition: left var(--transition-base) var(--ease-out);
+    box-shadow: var(--shadow-md);
   }
 
   .chatbot-sidebar.open {
@@ -535,19 +535,19 @@
   }
 
   .suggested-questions-bar {
-    padding: 8px 12px;
-    gap: 6px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    gap: var(--spacing-xs);
     position: fixed;
     bottom: 60px; /* Altura del input */
     left: 0;
     right: 0;
-    background: #fafafa;
-    border-top: 1px solid #e5e5e7;
+    background: var(--color-gray-50);
+    border-top: var(--border-thin) solid var(--color-gray-200);
     z-index: 10;
   }
 
-  .suggested-questions-bar .suggested-chip {
-    font-size: 0.8125rem !important;
+  .suggested-questions-bar .suggested-chip.MuiChip-root {
+    font-size: var(--font-size-sm);
   }
 
   .message-bubble {
@@ -559,8 +559,8 @@
   }
 
   .message-content {
-    font-size: 1rem;
-    padding: 12px 16px;
+    font-size: var(--font-size-base);
+    padding: var(--spacing-md) var(--spacing-base);
   }
 
   .chatbot-input-area {
@@ -570,14 +570,14 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: white;
-    border-top: 1px solid #e5e5e7;
+    background: var(--bg-primary);
+    border-top: var(--border-thin) solid var(--color-gray-200);
     z-index: 10;
   }
 
-  .chatbot-send-button {
-    min-width: 40px !important;
-    height: 40px !important;
+  .chatbot-send-button.MuiIconButton-root {
+    min-width: 40px;
+    height: 40px;
   }
 
   /* Ocultar sidebar toggle button en desktop */
@@ -599,8 +599,8 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    color: #007aff;
-    font-size: 24px;
+    color: var(--color-blue-primary);
+    font-size: var(--font-size-xl);
     padding: 0;
   }
 
