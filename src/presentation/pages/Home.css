@@ -1,0 +1,100 @@
+/**
+ * Home Page - Dashboard Principal
+ * Usando Design System Variables
+ */
+
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  padding: var(--spacing-xl);
+  font-family: var(--font-primary);
+  position: relative;
+}
+
+/* Logo */
+.home-logo {
+  position: absolute;
+  top: var(--spacing-xl);
+  left: var(--spacing-xl);
+  width: 140px;
+  height: auto;
+  z-index: var(--z-base);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+  transition: transform var(--transition-base);
+}
+
+.home-logo:hover {
+  transform: scale(1.05);
+}
+
+/* Legacy text logo - removido */
+.home-container::before {
+  display: none;
+}
+
+.user-info {
+  position: absolute;
+  top: var(--spacing-xl);
+  right: var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  background: var(--bg-primary);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  z-index: var(--z-base);
+  border: var(--border-thin) solid var(--color-gray-200);
+}
+
+.user-email {
+  font-size: var(--font-size-base);
+  color: var(--color-gray-900);
+  font-weight: var(--font-weight-medium);
+}
+
+.logout-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  color: var(--color-error);
+  transition: all var(--transition-base);
+  border-radius: var(--radius-full);
+}
+
+.logout-btn:hover {
+  background: rgba(209, 36, 47, 0.08);
+  transform: scale(1.05);
+}
+
+.content {
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  animation: fadeIn 1s var(--ease-out);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home-container {
+    padding: var(--spacing-base);
+    padding-top: 5rem;
+  }
+
+  .home-logo {
+    top: var(--spacing-base);
+    left: var(--spacing-base);
+    width: 100px;
+  }
+  
+  .user-info {
+    top: var(--spacing-base);
+    right: var(--spacing-base);
+  }
+}

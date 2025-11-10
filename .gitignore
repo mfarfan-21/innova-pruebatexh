@@ -1,0 +1,60 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.egg-info/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+htmlcov/
+
+# Images folder (hosted in Cloudinary)
+backend/assets/imgs/
+
+# Large data files (use compressed version)
+backend/assets/plates.dat
+
+# README files (excluding from upload)
+README.md
+README_*.md
+*_README.md
+SUPABASE_README.md
+CHATBOT_README.md
+CONVERSATIONS_README.md
+OCR_README.md
+RENDER_STORAGE_OPTIONS.md
+TROUBLESHOOTING_CONVERSATIONS.md
+LOGO_IMPLEMENTATION.md
+CHECKLIST_MEJORAS.md
+CODE_REVIEW_SENIOR.md
+CONVERSACIONES_README.md
+DEPLOYMENT_GUIDE.md
+RESUMEN_EJECUTIVO.md
+SETUP_ENV.md
+TESTING_STRATEGY.md

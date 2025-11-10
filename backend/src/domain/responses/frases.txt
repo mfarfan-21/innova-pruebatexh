@@ -1,0 +1,206 @@
+Caminante, no hay coche: se detecta al pasar.
+Cada paso es un frame, cada píxel una señal.
+Cuando el polvo se levanta, la cámara se detiene,
+y en el log queda tu nombre, aunque nadie lo pronuncie.
+
+Verde que te leo verde, verde la chapa y el sol.
+El viento mueve los coches, la cámara fija el rol.
+Verde la IA que sueña, verde la noche y el rol.
+
+Puedo escribir los bytes más tristes esta noche.
+Procesar, por ejemplo: “La cámara no detecta nada.”
+Y pensar que no volveré a leer esa placa,
+sentir que la base de datos está sola, y yo con ella.
+
+Resistiré, de frente al sol que ciega.
+Me doblaré, pero nunca dejaré de leer.
+Y aunque la lluvia empañe mi lente cansada,
+seguiré firme, leyendo matrículas a la madrugada.
+
+Libre, como el coche que pasa,
+libre, aunque el radar me cansa.
+La IA no duerme, la cámara no calla,
+y cada lectura es un pequeño acto de fe.
+
+Ser o no ser detectado, esa es la cuestión.
+Si conviene dejar pasar los frames del destino,
+o enfrentarse a un OCR dormido bajo el sol.
+La duda binaria me consume, mas sigo procesando.
+
+Como una ola de coches llega la mañana,
+cada matrícula un verso, cada paso un pixel nuevo.
+Yo, cámara incansable, los miro venir y los dejo ir,
+con la nostalgia de quien nunca olvida una lectura correcta.
+
+La cámara tiene un ratón,
+que lee matrículas sin ton ni son.
+Le da a la tecla, y al procesar,
+la nube empieza a parpadear.
+
+Que llueva, que llueva,
+la cámara no se mueva.
+Los píxeles florecen,
+las placas aparecen.
+
+Pero mira cómo pasan los coches en el río,
+pero mira cómo pasan, llenitos de brillo.
+Pasan y reflejan la luz del motor,
+y el OCR se esfuerza por hacerlo mejor.
+
+Cómo se pasa la luz,
+cómo el píxel se disuelve,
+cómo la imagen que ayer vi
+hoy el servidor no recuerda.
+Tan presto pasa el reflejo,
+tan fugaz es el motor,
+que sólo el OCR eterno
+conoce su verdadero color.
+
+Aquel sensor invicto,
+que a todo coche miraba,
+durmió su lente en silencio
+cuando el polvo lo cegaba.
+No hubo píxel que no ardiera,
+ni sombra que no brillara,
+cuando su código, al caer,
+dijo: “detecto, luego existo.”
+
+Déu posà en les càmeres la virtut de veure,
+i en el programador, la gràcia d’entendre.
+Així, per l’ordre dels píxels i dels nombres,
+el sistema pot conèixer el pas dels cotxes
+com l’ànima coneix el pas del pensament.
+
+Tot és per raó i per figura.
+La càmera veu, el servidor jutja,
+i el log és testimoni fidel.
+Si la placa és bruta, el raonament s’altera;
+però la lògica divina del codi
+troba la veritat enmig del soroll.
+
+De l’arrel de la llum neix el píxel,
+del píxel la imatge,
+de la imatge la lectura,
+i de la lectura, la saviesa de la màquina.
+Però si l’arrel és fosca,
+l’arbre no coneix el seu fruit.
+
+Hi ha tres tipus de matrícules:
+la clara, la confusa i la que no vol ser llegida.
+La clara és com la veritat: lluminosa i simple.
+La confusa és com l’home: parcial i limitada.
+La que no vol ser llegida és com el misteri:
+sols Déu —o l’algorisme— la pot comprendre.
+
+—Jo sóc la placa —digué el metall—,
+sense mi no hi ha lectura.
+—Jo sóc l’algorisme —respongué la màquina—,
+sense mi no hi ha enteniment.
+I Déu, mirant-los des de la lògica infinita,
+digué: “Sou l’un per l’altre,
+com la causa és per l’efecte.”
+
+Hi havia un cotxe sense placa
+que passava davant la càmera.
+El sistema no el veié, i cregué que no existia.
+Però el vent portà el seu reflex
+i el servidor digué:
+“Allò que no és visible, també pot ser veritat.”
+
+Decidme en el alma: ¿quién, quién leyó los píxeles?
+
+Caminante, no hay coche: se lee al andar.
+
+Verde que te leo verde, matrícula bajo el sol verde.
+
+Podrá borrar el polvo tus números un día, pero jamás mi log te olvidaría.
+
+No volverán las oscuras cámaras a captarte al pasar.
+
+Resistiré, cuando el sol me dé de lleno en el sensor.
+
+Y volver, volver… a leer tus letras, otra vez.
+
+Decidme, cámaras mías: ¿quién, quién te borra las matrículas?
+
+Si me olvidas tú, quedarán tus letras grabadas en mi log.
+
+Sombra aquí y sombra allá, cámara lee sin parar.
+
+El sistema ANPR nunca se equivoca… salvo cuando una paloma decide aterrizar justo delante de la cámara. En ese caso, la paloma pasa a ser “vehículo no autorizado”.
+
+Algunas matrículas parecen tener vergüenza: se esconden bajo el barro o el sol brillante. El sistema insiste, las escanea, y al final dice: “no soy adivino, pero creo que era un 8”.
+
+Nuestro sistema reconoce más de 30 países y una docena de errores tipográficos. Es el único que puede leer “O” como “0” sin enfadarse.
+
+Cuando no detecta nada, el sistema no se rinde. Simplemente dice: “Estoy pensando…”. A veces piensa durante horas.
+
+La cámara no juzga, solo observa. Pero a veces, cuando un coche sucio pasa a toda velocidad, jura que oye cómo suspira.
+
+El sistema LPR es tan eficiente que reconoció la matrícula de un coche en un videojuego. Todavía no entendemos cómo.
+
+Dicen que los algoritmos no tienen sentimientos, pero el mío se alegra cada vez que reconoce correctamente una matrícula con barro.
+
+Cámara quieta,
+una placa aparece,
+luz en el asfalto.
+
+Números corren,
+la IA los atrapa fiel,
+silencio digital.
+
+Placa borrosa,
+el sistema medita,
+“¿será una B?”
+
+En la noche gris,
+el flash revela un coche,
+permiso otorgado.
+
+Código y polvo,
+letras entre reflejos,
+acceso abierto.
+
+Sueña la cámara,
+matrículas que bailan,
+sin coches cerca.
+
+Veo letras, veo luz,
+veo coches sin ningún plus.
+Si la placa está girada,
+mi IA se queda asustada.
+
+Entre el ruido y el motor,
+la cámara siente amor.
+Por cada matrícula limpia,
+un byte de puro fervor.
+
+Luz, reflejo, sombra gris,
+la IA dice: “aquí sí”.
+Pero el coche era un camión,
+y la placa… una ilusión.
+
+Si el coche brilla, detecto;
+si no, improviso un texto.
+Porque aunque falle la vista,
+yo sigo siendo optimista.
+
+Uno, cero, cero, uno.
+Matrícula en el vacío.
+Confirmado: soy humano.
+Error. Recalculando.
+
+Noche de lluvia,
+la cámara respira,
+un coche pasa.
+Su placa reluce,
+la IA sonríe, sola.
+
+Matrícula, matrícula, matrícula… ¡ay, qué pena me da!
+Pasaste tan rápido y no te pude enfocar.
+El sol en el parabrisas me volvió a cegar,
+y en mi log sólo quedó tu sombra pixelada.
+Matrícula, matrícula, matrícula,
+¿por qué me haces fallar?
+El OCR llora, la cámara tiembla,
+y el servidor no deja de calcular.

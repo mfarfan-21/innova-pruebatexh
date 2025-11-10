@@ -1,0 +1,8 @@
+/* 
+ * Estilos Globales de la Aplicación
+ * Importa el sistema de diseño completo
+ */
+
+@import './presentation/styles/global.css';
+
+

@@ -1,0 +1,202 @@
+/**
+ * Design System - Variables CSS
+ * Sistema de diseño corporativo profesional
+ */
+
+:root {
+  /* ========== COLORES PRINCIPALES - PALETA INNOVA ========== */
+  
+  /* Colores Corporativos INNOVA (del logo) */
+  --color-innova-cyan: #009ece;           /* Azul cian brillante */
+  --color-innova-red: #e20152;            /* Rojo/fucsia intenso */
+  --color-innova-coral: #e51f4a;          /* Rojo coral */
+  --color-innova-navy: #1c3967;           /* Azul marino oscuro */
+  --color-innova-green: #87bc37;          /* Verde lima */
+  --color-innova-charcoal: #3b3635;       /* Gris carbón */
+  
+  /* Grises Corporativos */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f7;
+  --color-gray-200: #e5e5e7;
+  --color-gray-300: #d2d2d7;
+  --color-gray-400: #c7c7cc;
+  --color-gray-500: #aeaeb2;
+  --color-gray-600: #86868b;
+  --color-gray-700: #6e6e73;
+  --color-gray-800: var(--color-innova-charcoal);
+  --color-gray-900: var(--color-innova-navy);
+  
+  /* Azul Corporativo - usando colores INNOVA */
+  --color-blue-primary: var(--color-innova-cyan);
+  --color-blue-hover: #00b3e6;
+  --color-blue-light: rgba(0, 158, 206, 0.1);
+  --color-blue-gradient-start: var(--color-innova-cyan);
+  --color-blue-gradient-end: var(--color-innova-navy);
+  
+  /* Estados - usando paleta INNOVA */
+  --color-success: var(--color-innova-green);
+  --color-success-bg: #f1f8e9;
+  --color-success-text: #689f38;
+  --color-success-border: #dcedc8;
+  
+  --color-error: var(--color-innova-coral);
+  --color-error-bg: #fce4ec;
+  --color-error-text: var(--color-innova-red);
+  --color-error-border: #f8bbd0;
+  
+  --color-warning: #ffc107;
+  --color-warning-bg: #fff8e1;
+  --color-warning-text: #f57f17;
+  
+  --color-info: #17a2b8;
+  --color-info-bg: #e1f5fe;
+  --color-info-text: #0277bd;
+  
+  /* ========== TIPOGRAFÍA ========== */
+  
+  /* Font Families */
+  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --font-mono: 'SF Mono', 'Monaco', 'Courier New', monospace;
+  
+  /* Font Sizes */
+  --font-size-xs: 0.65rem;      /* 10.4px */
+  --font-size-sm: 0.75rem;      /* 12px */
+  --font-size-base: 0.875rem;   /* 14px */
+  --font-size-md: 0.95rem;      /* 15.2px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 2rem;        /* 32px */
+  --font-size-4xl: 3rem;        /* 48px */
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.05em;
+  --letter-spacing-wider: 0.08em;
+  --letter-spacing-widest: 0.12em;
+  
+  /* ========== ESPACIADO ========== */
+  
+  --spacing-xs: 0.25rem;      /* 4px */
+  --spacing-sm: 0.5rem;       /* 8px */
+  --spacing-md: 0.75rem;      /* 12px */
+  --spacing-base: 1rem;       /* 16px */
+  --spacing-lg: 1.5rem;       /* 24px */
+  --spacing-xl: 2rem;         /* 32px */
+  --spacing-2xl: 2.5rem;      /* 40px */
+  --spacing-3xl: 3rem;        /* 48px */
+  --spacing-4xl: 4rem;        /* 64px */
+  
+  /* ========== BORDES ========== */
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-base: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 20px;
+  --radius-full: 9999px;
+  
+  /* Border Width */
+  --border-thin: 1px;
+  --border-medium: 2px;
+  --border-thick: 3px;
+  
+  /* ========== SOMBRAS ========== */
+  
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-base: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-2xl: 0 12px 32px rgba(0, 0, 0, 0.15);
+  
+  /* Sombras con color - usando colores INNOVA */
+  --shadow-blue: 0 8px 32px rgba(0, 158, 206, 0.25);
+  --shadow-blue-hover: 0 8px 24px rgba(0, 158, 206, 0.2);
+  --shadow-cyan: 0 4px 16px rgba(0, 158, 206, 0.15);
+  --shadow-green: 0 4px 16px rgba(135, 188, 55, 0.15);
+  --shadow-coral: 0 4px 16px rgba(229, 31, 74, 0.15);
+  
+  /* ========== TRANSICIONES ========== */
+  
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+  --transition-slower: 500ms ease;
+  
+  /* Easing Functions */
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* ========== Z-INDEX ========== */
+  
+  --z-base: 1;
+  --z-dropdown: 10;
+  --z-sticky: 20;
+  --z-fixed: 30;
+  --z-modal-backdrop: 40;
+  --z-modal: 50;
+  --z-popover: 60;
+  --z-tooltip: 70;
+  
+  /* ========== BREAKPOINTS (para referencia) ========== */
+  /* Use en media queries: @media (max-width: 768px) */
+  
+  /* --breakpoint-xs: 480px; */
+  /* --breakpoint-sm: 640px; */
+  /* --breakpoint-md: 768px; */
+  /* --breakpoint-lg: 1024px; */
+  /* --breakpoint-xl: 1280px; */
+  /* --breakpoint-2xl: 1536px; */
+  
+  /* ========== BACKGROUNDS ========== */
+  
+  --bg-primary: #ffffff;
+  --bg-secondary: var(--color-gray-100);
+  --bg-tertiary: var(--color-gray-50);
+  
+  /* Gradientes */
+  --gradient-subtle: linear-gradient(135deg, var(--color-gray-50) 0%, var(--color-gray-100) 100%);
+  --gradient-blue: linear-gradient(135deg, var(--color-blue-gradient-start) 0%, var(--color-blue-gradient-end) 100%);
+  --gradient-overlay: linear-gradient(to top, rgba(29, 29, 31, 0.92), rgba(29, 29, 31, 0.4) 60%, transparent);
+  
+  /* ========== COMPONENTES ESPECÍFICOS ========== */
+  
+  /* Botones */
+  --button-height-sm: 32px;
+  --button-height-base: 40px;
+  --button-height-lg: 48px;
+  
+  /* Inputs */
+  --input-height-sm: 32px;
+  --input-height-base: 40px;
+  --input-height-lg: 48px;
+  
+  /* Cards */
+  --card-padding: var(--spacing-2xl);
+  --card-radius: var(--radius-3xl);
+  
+  /* ========== OPACIDADES ========== */
+  
+  --opacity-disabled: 0.4;
+  --opacity-hover: 0.85;
+  --opacity-active: 0.7;
+}

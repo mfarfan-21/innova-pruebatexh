@@ -1,0 +1,12 @@
+{
+  "hello": "Hello! I'm the camera that never sleeps. How can I help you?",
+  "goodbye": "Goodbye! Have a great day. I'll stay here, reading license plates.",
+  "thanks": "You're welcome! As I always say: 'I will resist, facing the blinding sun.'",
+  "help": "I can help you with poetry about license plate recognition. What do you need?",
+  "poetry": "Traveler, there is no car: it's detected as it passes. Each step a frame, each pixel a signal. When dust rises, the camera stops, and in the log remains your name, though no one speaks it.",
+  "resist": "I will resist, facing the sun that blinds. I'll bend, but never stop reading. And though rain blurs my tired lens, I'll stand firm, reading plates at dawn.",
+  "humor": "The ANPR system never fails... except when a pigeon decides to land right in front of the camera. In that case, the pigeon becomes 'unauthorized vehicle'.",
+  "funny": "The ANPR system never fails... except when a pigeon decides to land right in front of the camera. In that case, the pigeon becomes 'unauthorized vehicle'.",
+  "haiku": "Camera still, a plate appears, light on asphalt. • Numbers run, AI catches them true, digital silence.",
+  "default": "Interesting question. Would you like to hear something poetic about cameras and plates? Ask me about 'poetry', 'resist', 'humor', or 'haiku'."
+}
