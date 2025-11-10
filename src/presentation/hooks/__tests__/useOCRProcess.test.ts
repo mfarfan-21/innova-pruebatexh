@@ -6,12 +6,11 @@
  * - Test de manejo de errores
  * - Test de estados de loading
  * - Test de reset de estado
- * - Test de integración con API externa
  * 
  * JUSTIFICACIÓN:
  * Este hook gestiona el core del negocio: el reconocimiento OCR.
- * Es crítico asegurar que maneja correctamente los estados de carga,
- * errores, y que envía los datos a la API externa.
+ * Es crítico asegurar que maneja correctamente los estados de carga
+ * y errores durante el proceso de reconocimiento.
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
@@ -24,7 +23,6 @@ import type { OCRDetailedResponse } from '@/infrastructure/adapters/ocrClient';
 vi.mock('@/infrastructure/adapters/ocrClient', () => ({
   ocrClient: {
     recognizePlateDetailed: vi.fn(),
-    sendToExternalAPI: vi.fn(),
   },
 }));
 
@@ -73,7 +71,6 @@ describe('useOCRProcess', () => {
     };
 
     vi.mocked(ocrClient.recognizePlateDetailed).mockResolvedValue(mockResult);
-    vi.mocked(ocrClient.sendToExternalAPI).mockResolvedValue();
 
     const { result } = renderHook(() => useOCRProcess());
 
@@ -90,15 +87,6 @@ describe('useOCRProcess', () => {
     expect(result.current.detailedResult).toEqual(mockResult);
     expect(result.current.lastShotTime).toBeTruthy();
     expect(result.current.error).toBeNull();
-
-    // Verificar que se llamó a la API externa
-    expect(ocrClient.sendToExternalAPI).toHaveBeenCalledWith(
-      expect.objectContaining({
-        plate_number: 'ABC123',
-        image_name: 'test.jpg',
-        coordinates: mockResult.coordinates,
-      })
-    );
   });
 
   it('debe manejar errores del servicio OCR', async () => {

@@ -1,32 +1,68 @@
 # Innova - Prueba Técnica
 
-Aplicación React con TypeScript, Vite y Material UI. Incluye autenticación con Supabase, reconocimiento OCR de matrículas y chatbot conversacional.
+Webapp React con TypeScript, Vite y Material UI. Incluye autenticación con Supabase, reconocimiento OCR de matrículas y chatbot conversacional.
 
 ## Requisitos
 
 - Node.js 18 o superior
 - Cuenta en Supabase (gratis)
 
+### ¿Por qué necesitas Node.js?
+
+Node.js es el motor que ejecuta JavaScript fuera del navegador. Sin él, no puedes correr React ni ninguna aplicación JavaScript moderna. Cuando instalas Node.js, también te viene npm (Node Package Manager), que es como un app store para código: te permite descargar e instalar todas las librerías que usa el proyecto (React, Material UI, TypeScript, etc.) con un solo comando.
+
+En este proyecto uso Node.js v24.11.0, pero cualquier versión 18+ funciona perfectamente. npm es fundamental porque gestiona las 40+ dependencias del proyecto automáticamente.
+
 ## Instalación
 
-Después de descargar el proyecto, instala las dependencias:
+### Paso 1: Descomprimir el proyecto
+
+Después de descargar el zip, descomprímelo donde quieras. Luego abre una terminal y navega hasta esa carpeta:
+
+```bash
+cd /ruta/donde/descomprimiste/innova
+```
+
+Por ejemplo, si lo descomprimiste en Descargas:
+
+```bash
+cd ~/Downloads/innova
+```
+
+### Paso 2: Instalar dependencias
+
+Una vez dentro de la carpeta del proyecto, ejecuta:
 
 ```bash
 npm install
 ```
 
+Esto descargará todas las librerías necesarias
+
+### Paso 3: Configurar variables de entorno
+
+Debes tener la version mas nueva de node, en este caso la  v24.11.0
+
+Antes de arrancar, necesitas tener el archivo `.env` con las credenciales de Supabase
+
+### Paso 4: Ejecutar el proyecto
+
+Ya tienes todo listo. Para arrancar el servidor de desarrollo, ejecuta:
+
+```bash
+npm start
+```
+
+Se abrirá automáticamente en tu navegador en `http://localhost:5173`. Si no se abre solo, copia esa URL en tu navegador.
+
+Credenciales de prueba:
+- Usuario: `mfarfan`
+- Contraseña: `Mafer1234`
+
+
 ## Configuración de Supabase
 
-He integrado Supabase como base de datos porque permite hasta 200 usuarios gratis, perfecto para una prueba técnica. Como Supabase requiere correos electrónicos reales para la autenticación, creé una tabla `users` adicional para manejar usuarios con nombres de usuario normales sin necesidad de emails.
-
-### Paso 1: Crear cuenta en Supabase
-
-Entra a [supabase.com](https://supabase.com) y crea una cuenta gratuita.
-
-### Paso 2: Crear proyecto
-
-- Crea un nuevo proyecto
-- Anota la URL y la API Key (las necesitarás después)
+He integrado Supabase como base de datos porque permite hasta 200 usuarios gratis, perfecto para una prueba técnica, lo consideraria como un primo hermano de PHPmyadmin. Como Supabase requiere correos electrónicos reales para la autenticación, creé una tabla `users` adicional para manejar usuarios con nombres de usuario normales sin necesidad de emails
 
 ### Paso 3: Configurar la base de datos
 
@@ -54,47 +90,7 @@ CREATE POLICY "Los usuarios pueden actualizar su propio perfil"
   USING (auth.uid() = id);
 ```
 
-### Paso 4: Crear usuario de prueba
-
-En Supabase:
-
-1. Ve a Authentication > Users > Add user
-2. Crea un usuario:
-   - Email: `test@example.com`
-   - Password: `test123456`
-   - Marca "Auto Confirm User"
-
-3. Copia el UUID del usuario creado
-
-4. Ve a Table Editor > users > Insert row
-   - id: (pega el UUID copiado)
-   - username: `testuser`
-   - email: `test@example.com`
-
-### Paso 5: Variables de entorno
-
-Crea un archivo `.env` en la raíz del proyecto:
-
-```bash
-VITE_SUPABASE_URL=tu_url_de_supabase_aqui
-VITE_SUPABASE_ANON_KEY=tu_anon_key_aqui
-```
-
-Las encuentras en tu proyecto de Supabase: Settings > API
-
-## Ejecutar la aplicación
-
-```bash
-npm start
-```
-
-La aplicación estará disponible en `http://localhost:5173`
-
-Credenciales de prueba:
-- Usuario: `testuser`
-- Contraseña: `test123456`
-
-## Scripts disponibles
+## Scripts disponibles en PJ
 
 - `npm start` - Inicia el servidor de desarrollo
 - `npm run build` - Genera el build de producción
@@ -134,6 +130,14 @@ src/
 
 ## Notas técnicas
 
-Por qué Supabase: Elegí Supabase porque ofrece 200 usuarios gratis, perfecto para esta prueba técnica. Como requiere emails para autenticación, implementé una tabla `users` adicional para permitir login con username en lugar de email, más apropiado para este contexto.
+### Por qué estas tecnologías
 
-La aplicación usa arquitectura hexagonal para separar la lógica de negocio de la infraestructura, facilitando el testing y el mantenimiento.
+Elegí React en lugar de Angular porque me resulta más natural y directo. React tiene un ecosistema enorme y encontrar soluciones es muy rápido, además de que los hooks hacen que el código quede limpio y fácil de entender. Angular está genial para proyectos empresariales grandes, pero para esta prueba técnica React me da más agilidad
+
+TypeScript fue una decisión automática. Me encanta tener el autocompletado y que el editor me avise de los errores antes de ejecutar el código. Tambien lo uso para angular.
+
+Para los componentes, Material UI es mi librería favorita (tambien porque lo enlazo con figma muy rapido). Ya trae todo hecho y con un diseño profesional: botones, inputs, modales, todo. Puedo personalizarlos con mi design system de variables CSS y me queda una interfaz consistente en toda la aplicación sin tener que diseñar cada componente desde cero.
+
+### Arquitectura hexagonal
+
+La aplicación usa arquitectura hexagonal para separar la lógica de negocio de la infraestructura, facilitando el testing y el mantenimiento. Esto hace que el código sea más organizado y escalable.

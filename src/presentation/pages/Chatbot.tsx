@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Paper, Typography, Chip, IconButton } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
-import PersonIcon from '@mui/icons-material/Person';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { useLanguage } from '../../application/services/useLanguage';
@@ -164,7 +163,7 @@ export const Chatbot = () => {
       <div className="chatbot-fixed-header">
         <div className="header-left">
           <button onClick={() => navigate('/')} className="back-button">
-            ← {t.welcome}
+            ← {t.chatbotBack}
           </button>
         </div>
         
@@ -174,13 +173,11 @@ export const Chatbot = () => {
       </div>
 
       <div className="chatbot-content">
-        <div className="chatbot-card">
+          <div className="chatbot-card">
           <h2 className="chatbot-card-title">
             <SmartToyIcon sx={{ mr: 1 }} />
-            Chatbot Poético
-          </h2>
-
-          <div className="chatbot-main-layout">
+            {t.chatbotTitle}
+          </h2>          <div className="chatbot-main-layout">
             {/* Sidebar: Historial de conversaciones */}
             <div className={`chatbot-sidebar ${sidebarOpen ? 'open' : ''}`}>
               {sidebarOpen && (
@@ -212,7 +209,7 @@ export const Chatbot = () => {
                 onClick={() => setSidebarOpen(!sidebarOpen)}
               >
                 <MenuIcon fontSize="small" />
-                <span>Historial</span>
+                <span>{t.chatbotHistory}</span>
               </button>
 
               {/* Mensajes */}
@@ -220,26 +217,24 @@ export const Chatbot = () => {
                 {!selectedConvId ? (
                   <div className="chatbot-empty-state">
                     <SmartToyIcon sx={{ fontSize: 60, mb: 2, color: '#999' }} />
-                    <Typography color="#999">Crea una nueva conversación para empezar</Typography>
+                    <Typography color="#999">{t.chatbotEmptyState}</Typography>
                   </div>
                 ) : messages.length === 0 ? (
                   <div className="chatbot-empty-state">
                     <SmartToyIcon sx={{ fontSize: 60, mb: 2, color: '#999' }} />
-                    <Typography color="#999">¡Pregúntame sobre poesía y matrículas!</Typography>
+                    <Typography color="#999">{t.chatbotAskMe}</Typography>
                   </div>
                 ) : (
                   <>
                     {messages.map((msg) => (
                       <Paper
                         key={msg.id}
-                        elevation={1}
+                        elevation={0}
                         className={`message-bubble ${msg.role}`}
                       >
-                        {msg.role === 'assistant' && <SmartToyIcon className="message-icon" />}
                         <Typography variant="body2" className="message-content">
                           {msg.content}
                         </Typography>
-                        {msg.role === 'user' && <PersonIcon className="message-icon" />}
                       </Paper>
                     ))}
                   </>
@@ -247,7 +242,7 @@ export const Chatbot = () => {
                 
                 {/* Loading indicator */}
                 {isLoading && (
-                  <Paper elevation={1} className="message-bubble assistant">
+                  <Paper elevation={0} className="message-bubble assistant">
                     <SmartToyIcon className="message-icon" />
                     <div className="typing-indicator">
                       <span></span>
@@ -289,7 +284,7 @@ export const Chatbot = () => {
                 <TextField
                   fullWidth
                   size="small"
-                  placeholder="Escribe tu mensaje..."
+                  placeholder={t.chatbotPlaceholder}
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}

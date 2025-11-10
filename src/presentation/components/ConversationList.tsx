@@ -2,9 +2,12 @@ import { Box, List, ListItemButton, ListItemText, Button, Typography, IconButton
 import AddIcon from '@mui/icons-material/Add';
 import ChatIcon from '@mui/icons-material/Chat';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useLanguage } from '../../application/services/useLanguage';
 import type { ConversationListProps } from '../../domain/entities/ComponentInterfaces';
 
 export const ConversationList = ({ conversations, selectedId, onSelect, onNew, onDelete }: ConversationListProps) => {
+  const { t } = useLanguage();
+  
   return (
     <Box sx={{ 
       width: 280, 
@@ -38,7 +41,7 @@ export const ConversationList = ({ conversations, selectedId, onSelect, onNew, o
             }
           }}
         >
-          Nueva Conversación
+          {t.chatbotNewConversation}
         </Button>
       </Box>
       
@@ -67,7 +70,7 @@ export const ConversationList = ({ conversations, selectedId, onSelect, onNew, o
               fontSize: '0.8125rem'
             }}
           >
-            No hay conversaciones
+            {t.chatbotNoConversations}
           </Typography>
         ) : (
           conversations.map((conv) => (
