@@ -377,7 +377,7 @@
   display: grid;
   grid-template-columns: 140px 1fr;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  transition: background var(--transition-base);
+  transition: var(--transition-base);
   box-sizing: border-box;
   width: 100%;
 }
