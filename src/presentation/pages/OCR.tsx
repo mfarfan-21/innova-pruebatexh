@@ -187,7 +187,7 @@ export const OCR = () => {
               checked={autoChangeEnabled}
               onChange={(e) => setAutoChangeEnabled(e.target.checked)}
             />
-            <span>Cambio automático cada 20s</span>
+            <span>{t.ocrAutoChange}</span>
           </label>
           
           {/* Barra de progreso */}
@@ -195,7 +195,7 @@ export const OCR = () => {
             <Box sx={{ width: '100%', mt: 2 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 0.5 }}>
                 <span style={{ fontSize: '0.875rem', color: '#666' }}>
-                  Próximo cambio en {Math.ceil((100 - progress) / 5)} segundos
+                  {t.ocrNextChange} {Math.ceil((100 - progress) / 5)} {t.ocrSeconds}
                 </span>
                 <span style={{ fontSize: '0.875rem', color: '#009ece', fontWeight: 500 }}>
                   {Math.round(progress)}%
@@ -225,7 +225,7 @@ export const OCR = () => {
           {/* Info de imagen actual */}
           <div className="ocr-image-info">
             <span className="ocr-image-counter">
-              Imagen {currentImageIndex + 1} de {availableImages.length}
+              {t.ocrImageCounter} {currentImageIndex + 1} {t.ocrOf} {availableImages.length}
             </span>
             <span className="ocr-image-name">{currentImage}</span>
           </div>
@@ -237,7 +237,7 @@ export const OCR = () => {
               {/* Contenedor de imagen */}
               <div className="ocr-image-container">
                 {isLoadingImages ? (
-                  <div className="ocr-placeholder">Cargando imágenes...</div>
+                  <div className="ocr-placeholder">{t.ocrLoadingImages}</div>
                 ) : currentImage ? (
                   <img
                     src={getImageUrl(currentImage)}
@@ -259,7 +259,7 @@ export const OCR = () => {
                   disabled={isLoadingImages || availableImages.length === 0}
                   className="ocr-button ocr-button-secondary"
                 >
-                  ← Anterior
+                  ← {t.ocrPrevious}
                 </button>
                 
                 <button
@@ -275,7 +275,7 @@ export const OCR = () => {
                   disabled={isLoadingImages || availableImages.length === 0}
                   className="ocr-button ocr-button-secondary"
                 >
-                  Siguiente →
+                  {t.ocrNext} →
                 </button>
               </div>
             </div>
@@ -290,31 +290,31 @@ export const OCR = () => {
                   {/* Tabla formal estilo Apple */}
                   <div className="apple-table">
                     <div className="apple-table-row">
-                      <div className="apple-table-cell apple-table-header">Image</div>
+                      <div className="apple-table-cell apple-table-header">{t.ocrDetailsImage}</div>
                       <div className="apple-table-cell">{detailedResult.image_name}</div>
                     </div>
                     <div className="apple-table-row">
-                      <div className="apple-table-cell apple-table-header">Characters</div>
+                      <div className="apple-table-cell apple-table-header">{t.ocrDetailsCharacters}</div>
                       <div className="apple-table-cell">{detailedResult.num_characters}</div>
                     </div>
                     <div className="apple-table-row">
-                      <div className="apple-table-cell apple-table-header">Validation</div>
+                      <div className="apple-table-cell apple-table-header">{t.ocrDetailsValidation}</div>
                       <div className="apple-table-cell">
                         <span className={`validation-badge ${detailedResult.is_valid ? 'valid' : 'invalid'}`}>
-                          {detailedResult.is_valid ? 'Valid' : 'Invalid'}
+                          {detailedResult.is_valid ? t.ocrValidationValid : t.ocrValidationInvalid}
                         </span>
                       </div>
                     </div>
                     {lastShotTime && (
                       <div className="apple-table-row">
-                        <div className="apple-table-cell apple-table-header">Timestamp</div>
+                        <div className="apple-table-cell apple-table-header">{t.ocrDetailsTimestamp}</div>
                         <div className="apple-table-cell">
                           {new Date(lastShotTime).toLocaleString('es-ES')}
                         </div>
                       </div>
                     )}
                     <div className="apple-table-row">
-                      <div className="apple-table-cell apple-table-header">External API</div>
+                      <div className="apple-table-cell apple-table-header">{t.ocrDetailsExternalAPI}</div>
                       <div className="apple-table-cell">
                         <button 
                           className="api-link-button"
@@ -328,7 +328,7 @@ export const OCR = () => {
                 </div>
               ) : (
                 <div className="ocr-placeholder-panel">
-                  <p>Click "Disparar" to recognize a plate</p>
+                  <p>{t.ocrClickShoot}</p>
                 </div>
               )}
 
@@ -346,13 +346,13 @@ export const OCR = () => {
         {shotHistory.length > 0 && (
           <div className="shot-history shot-history-bottom">
             <div className="shot-history-header">
-              <h3 className="shot-history-title">Shot History ({shotHistory.length})</h3>
+              <h3 className="shot-history-title">{t.ocrShotHistory} ({shotHistory.length})</h3>
               <button 
                 onClick={() => setShotHistory([])} 
                 className="clear-history-btn"
-                title="Clear history"
+                title={t.ocrClearHistory}
               >
-                Clear All
+                {t.ocrClearHistory}
               </button>
             </div>
             <div className="shot-history-grid">
@@ -377,7 +377,7 @@ export const OCR = () => {
                       })}
                     </span>
                     <span className={`shot-status ${shot.isValid ? 'valid' : 'invalid'}`}>
-                      {shot.isValid ? 'Valid' : 'Invalid'}
+                      {shot.isValid ? t.ocrValidationValid : t.ocrValidationInvalid}
                     </span>
                   </div>
                 </div>
