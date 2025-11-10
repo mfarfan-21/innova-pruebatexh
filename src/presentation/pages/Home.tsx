@@ -12,7 +12,7 @@ import { LanguageSelector } from '../components/LanguageSelector';
 import './Home.css';
 
 export const Home = () => {
-  const { t, currentLanguage } = useLanguage();
+  const { t } = useLanguage();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -91,14 +91,10 @@ export const Home = () => {
                 <CardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', p: 4 }}>
                   <SmartToyIcon sx={{ fontSize: 64, mb: 2, mx: 'auto', color: '#1c3967' }} /> {/* Azul marino INNOVA */}
                   <h2 style={{ fontSize: '2rem', margin: '0 0 1rem 0', fontWeight: 700, color: '#1c3967' }}> {/* Azul marino INNOVA */}
-                    {currentLanguage === 'es' && 'Chatbot Poético'}
-                    {currentLanguage === 'en' && 'Poetic Chatbot'}
-                    {currentLanguage === 'ca' && 'Chatbot Poètic'}
+                    {t.chatbotTitle}
                   </h2>
                   <p style={{ fontSize: '1rem', margin: 0, color: '#3b3635' }}> {/* Gris carbón INNOVA */}
-                    {currentLanguage === 'es' && 'Habla conmigo sobre poesía y reconocimiento de matrículas'}
-                    {currentLanguage === 'en' && 'Talk to me about poetry and license plate recognition'}
-                    {currentLanguage === 'ca' && 'Parla amb mi sobre poesia i reconeixement de matrícules'}
+                    {t.chatbotDescription}
                   </p>
                 </CardContent>
                 <CardActions sx={{ justifyContent: 'center', pb: 3 }}>
@@ -123,9 +119,7 @@ export const Home = () => {
                       },
                     }}
                   >
-                    {currentLanguage === 'es' && 'Abrir Chat'}
-                    {currentLanguage === 'en' && 'Open Chat'}
-                    {currentLanguage === 'ca' && 'Obrir Xat'}
+                    {t.chatbotOpenButton}
                   </Button>
                 </CardActions>
               </Card>
@@ -177,9 +171,7 @@ export const Home = () => {
                       },
                     }}
                   >
-                    {currentLanguage === 'es' && 'Abrir OCR'}
-                    {currentLanguage === 'en' && 'Open OCR'}
-                    {currentLanguage === 'ca' && 'Obrir OCR'}
+                    {t.ocrOpenButton}
                   </Button>
                 </CardActions>
               </Card>
