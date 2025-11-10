@@ -173,15 +173,6 @@ export const Chatbot = () => {
         </div>
       </div>
 
-      {/* Botón flotante de menú (móvil) */}
-      <button 
-        className="mobile-menu-fab" 
-        onClick={() => setSidebarOpen(!sidebarOpen)}
-      >
-        <MenuIcon className="mobile-menu-fab-icon" fontSize="small" />
-        <span className="mobile-menu-fab-text">Historial</span>
-      </button>
-
       <div className="chatbot-content">
         <div className="chatbot-card">
           <h2 className="chatbot-card-title">
@@ -215,6 +206,15 @@ export const Chatbot = () => {
 
             {/* Área de chat */}
             <div className="chatbot-chat-area">
+              {/* Botón de Historial (móvil) - Submenú arriba de mensajes */}
+              <button 
+                className="mobile-history-submenu" 
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+              >
+                <MenuIcon fontSize="small" />
+                <span>Historial</span>
+              </button>
+
               {/* Mensajes */}
               <div className="chatbot-messages">
                 {!selectedConvId ? (
