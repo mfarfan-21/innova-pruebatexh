@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "vite",
+  "env": {
+    "VITE_SUPABASE_URL": "https://jahnxvzevcpjlbcptzmu.supabase.co",
+    "VITE_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImphaG54dnpldmNwamxiY3B0em11Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI2MTk2NTMsImV4cCI6MjA3ODE5NTY1M30.8cYwkL-4zz5nB5bsVZVD_2RzvTYXOd6jKhwR_i-XYsg",
+    "VITE_API_URL": "https://innova-pruebatexh.onrender.com"
+  }
+}
