@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../../application/services/AuthContext';
 import { useLanguage } from '../../application/services/useLanguage';
 import { LanguageSelector } from '../components/LanguageSelector';
+import { LoadingSpinner } from '../components/LoadingSpinner';
 import LoginIcon from '@mui/icons-material/Login';
 import InnovaLogo from '../../assets/logo/Inova-logo.svg';
 import './Login.css';
@@ -29,17 +30,7 @@ export const Login = () => {
   };
 
   if (isLoading) {
-    return (
-      <div className="login-container">
-        <div className="login-loading-state">
-          <div className="loading-logo-container">
-            <img src={InnovaLogo} alt="INNOVA" className="loading-logo" />
-            <div className="loading-spinner"></div>
-          </div>
-          <p className="loading-text">{t.loading || 'Cargando...'}</p>
-        </div>
-      </div>
-    );
+    return <LoadingSpinner fullscreen message={t.loading || 'Cargando...'} />;
   }
 
   return (
@@ -96,7 +87,7 @@ export const Login = () => {
             className="login-button"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Loading...' : t.loginButton}
+            {isSubmitting ? t.loading || 'Cargando...' : t.loginButton}
           </button>
         </form>
       </div>

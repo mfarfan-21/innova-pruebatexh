@@ -367,12 +367,15 @@
 }
 .chatbot-input-area button{
     height: 100%;
+    border-radius: 12px;
   }
 
 .chatbot-input {
   flex: 1;
 }
-
+.css-1sl8bg8 span:last-child {
+  visibility: hidden;
+}
 .chatbot-input .MuiOutlinedInput-root {
   background: var(--color-gray-100);
   border-radius: var(--radius-2xl);

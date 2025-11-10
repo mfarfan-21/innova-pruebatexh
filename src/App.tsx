@@ -6,6 +6,7 @@ import { Chatbot } from './presentation/pages/Chatbot';
 import { AuthProvider, useAuth } from './application/services/AuthContext';
 import { LanguageProvider } from './application/services/LanguageContext';
 import { ErrorBoundary } from './presentation/components/ErrorBoundary';
+import { LoadingSpinner } from './presentation/components/LoadingSpinner';
 import './App.css';
 
 // Componente para rutas protegidas
@@ -13,7 +14,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner fullscreen message="Verificando autenticación..." />;
   }
 
   return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
@@ -24,7 +25,7 @@ const PublicRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingSpinner fullscreen message="Verificando autenticación..." />;
   }
 
   return !isAuthenticated ? <>{children}</> : <Navigate to="/" replace />;

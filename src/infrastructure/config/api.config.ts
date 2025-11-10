@@ -3,8 +3,10 @@
  * Configuración centralizada de URLs y constantes de API
  */
 
-// Backend API URL - puede ser sobrescrito por variable de entorno
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+import { ENV } from './env.config';
+
+// Backend API URL - validado desde variables de entorno
+export const API_BASE_URL = ENV.apiUrl;
 
 // Endpoints específicos
 export const API_ENDPOINTS = {
