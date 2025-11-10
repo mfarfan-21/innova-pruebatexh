@@ -203,6 +203,7 @@
   overflow: hidden;
   border: var(--border-medium) solid var(--color-gray-200);
   transition: border-color var(--transition-base);
+  box-sizing: border-box;
 }
 
 .ocr-image-container:hover {
@@ -212,6 +213,8 @@
 .ocr-image {
   max-width: 100%;
   max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -228,7 +231,7 @@
   display: flex;
   gap: var(--spacing-base);
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .ocr-button {
@@ -297,6 +300,9 @@
   animation: slideUp 0.4s var(--ease-out);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   border: var(--border-thin) solid #d2d2d7;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
 }
 
 .ocr-result-label {
@@ -363,6 +369,8 @@
   border-radius: var(--radius-xl);
   overflow: hidden;
   backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .apple-table-row {
@@ -370,6 +378,8 @@
   grid-template-columns: 140px 1fr;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   transition: background var(--transition-base);
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .apple-table-row:last-child {
@@ -386,6 +396,9 @@
   align-items: center;
   font-size: var(--font-size-md);
   color: var(--color-gray-900);
+  word-break: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
 }
 
 .apple-table-header {
@@ -672,15 +685,26 @@
   }
 
   .ocr-navigation {
-    flex-direction: column;
+    flex-direction: row;
+    gap: var(--spacing-sm);
+    width: 100%;
   }
 
   .ocr-button {
-    width: 100%;
+    flex: 1;
+    padding: var(--spacing-md) var(--spacing-base);
+    font-size: var(--font-size-sm);
+    white-space: nowrap;
   }
 
   .ocr-result-value {
     font-size: 2.5rem;
+  }
+
+  .ocr-result-card {
+    padding: 1rem;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .ocr-image-info {
@@ -725,8 +749,15 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
 
+  .apple-table-cell {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+  }
+
   .api-link-button {
     width: 100%;
     justify-content: center;
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
   }
 }
