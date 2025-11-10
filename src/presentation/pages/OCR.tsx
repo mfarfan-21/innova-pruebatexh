@@ -167,63 +167,61 @@ export const OCR = () => {
 
   return (
     <div className="ocr-container">
-      {/* Language selector in top right */}
-      <div className="ocr-language-selector">
-        <LanguageSelector />
+      {/* Fixed header con controles */}
+      <div className="ocr-fixed-header">
+        <button onClick={() => navigate('/')} className="back-button">
+          ← {t.welcome}
+        </button>
+        
+        <div className="ocr-language-selector">
+          <LanguageSelector />
+        </div>
       </div>
 
-      <button onClick={() => navigate('/')} className="back-button">
-        ← {t.welcome}
-      </button>
-
       <div className="ocr-content">
-        <div className="ocr-header">
-          <h1 className="ocr-title">{t.ocrTitle}</h1>
-          <p className="ocr-subtitle">{t.ocrSubtitle}</p>
+        {/* Control de auto-cambio encerrado en contenedor elegante */}
+        <div className="auto-change-container">
+          <label className="auto-change-label">
+            <input
+              type="checkbox"
+              checked={autoChangeEnabled}
+              onChange={(e) => setAutoChangeEnabled(e.target.checked)}
+            />
+            <span>Cambio automático cada 20s</span>
+          </label>
           
-          {/* Control de auto-cambio */}
-          <div className="ocr-auto-toggle">
-            <label>
-              <input
-                type="checkbox"
-                checked={autoChangeEnabled}
-                onChange={(e) => setAutoChangeEnabled(e.target.checked)}
-              />
-              <span style={{ marginLeft: '8px' }}>
-                Cambio automático cada 20s
-              </span>
-            </label>
-            
-            {/* Barra de progreso */}
-            {autoChangeEnabled && availableImages.length > 0 && (
-              <Box sx={{ width: '100%', mt: 2 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 0.5 }}>
-                  <span style={{ fontSize: '0.875rem', color: '#666' }}>
-                    Próximo cambio en {Math.ceil((100 - progress) / 5)} segundos
-                  </span>
-                  <span style={{ fontSize: '0.875rem', color: '#009ece', fontWeight: 500 }}>
-                    {Math.round(progress)}%
-                  </span>
-                </Box>
-                <LinearProgress 
-                  variant="determinate" 
-                  value={progress} 
-                  sx={{
-                    height: 8,
-                    borderRadius: 4,
-                    backgroundColor: '#e0e0e0',
-                    '& .MuiLinearProgress-bar': {
-                      borderRadius: 4,
-                      backgroundColor: '#009ece',
-                    }
-                  }}
-                />
+          {/* Barra de progreso */}
+          {autoChangeEnabled && availableImages.length > 0 && (
+            <Box sx={{ width: '100%', mt: 2 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 0.5 }}>
+                <span style={{ fontSize: '0.875rem', color: '#666' }}>
+                  Próximo cambio en {Math.ceil((100 - progress) / 5)} segundos
+                </span>
+                <span style={{ fontSize: '0.875rem', color: '#009ece', fontWeight: 500 }}>
+                  {Math.round(progress)}%
+                </span>
               </Box>
-            )}
-          </div>
+              <LinearProgress 
+                variant="determinate" 
+                value={progress} 
+                sx={{
+                  height: 8,
+                  borderRadius: 4,
+                  backgroundColor: '#e0e0e0',
+                  '& .MuiLinearProgress-bar': {
+                    borderRadius: 4,
+                    backgroundColor: '#009ece',
+                  }
+                }}
+              />
+            </Box>
+          )}
         </div>
 
         <div className="ocr-card">
+          {/* Título dentro del card */}
+          <h2 className="ocr-card-title">{t.ocrSubtitle}</h2>
+          
           {/* Info de imagen actual */}
           <div className="ocr-image-info">
             <span className="ocr-image-counter">
@@ -280,50 +278,6 @@ export const OCR = () => {
                   Siguiente →
                 </button>
               </div>
-
-              {/* Historial de Shots debajo del contenedor de imagen */}
-              {shotHistory.length > 0 && (
-                <div className="shot-history shot-history-bottom">
-                  <div className="shot-history-header">
-                    <h3 className="shot-history-title">Shot History ({shotHistory.length})</h3>
-                    <button 
-                      onClick={() => setShotHistory([])} 
-                      className="clear-history-btn"
-                      title="Clear history"
-                    >
-                      Clear All
-                    </button>
-                  </div>
-                  <div className="shot-history-grid">
-                    {shotHistory.map((shot) => (
-                      <div key={shot.id} className="shot-history-item">
-                        <div className="shot-thumbnail">
-                          <img
-                            src={getImageUrl(shot.imageName)}
-                            alt={shot.plateNumber}
-                            className="shot-thumbnail-img"
-                          />
-                          <div className="shot-overlay">
-                            <span className="shot-plate">{shot.plateNumber}</span>
-                          </div>
-                        </div>
-                        <div className="shot-info">
-                          <span className="shot-time">
-                            {new Date(shot.timestamp).toLocaleTimeString('es-ES', {
-                              hour: '2-digit',
-                              minute: '2-digit',
-                              second: '2-digit'
-                            })}
-                          </span>
-                          <span className={`shot-status ${shot.isValid ? 'valid' : 'invalid'}`}>
-                            {shot.isValid ? 'Valid' : 'Invalid'}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* Panel lateral derecho con información */}
@@ -361,8 +315,13 @@ export const OCR = () => {
                     )}
                     <div className="apple-table-row">
                       <div className="apple-table-cell apple-table-header">External API</div>
-                      <div className="apple-table-cell ocr-api-status">
-                        Sent to external-api.example.com
+                      <div className="apple-table-cell">
+                        <button 
+                          className="api-link-button"
+                          onClick={() => window.open('https://external-api.example.com', '_blank')}
+                        >
+                          📋 external-api.example.com
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -382,6 +341,50 @@ export const OCR = () => {
             </div>
           </div>
         </div>
+
+        {/* Historial de Shots debajo de todo el card */}
+        {shotHistory.length > 0 && (
+          <div className="shot-history shot-history-bottom">
+            <div className="shot-history-header">
+              <h3 className="shot-history-title">Shot History ({shotHistory.length})</h3>
+              <button 
+                onClick={() => setShotHistory([])} 
+                className="clear-history-btn"
+                title="Clear history"
+              >
+                Clear All
+              </button>
+            </div>
+            <div className="shot-history-grid">
+              {shotHistory.map((shot) => (
+                <div key={shot.id} className="shot-history-item">
+                  <div className="shot-thumbnail">
+                    <img
+                      src={getImageUrl(shot.imageName)}
+                      alt={shot.plateNumber}
+                      className="shot-thumbnail-img"
+                    />
+                    <div className="shot-overlay">
+                      <span className="shot-plate">{shot.plateNumber}</span>
+                    </div>
+                  </div>
+                  <div className="shot-info">
+                    <span className="shot-time">
+                      {new Date(shot.timestamp).toLocaleTimeString('es-ES', {
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        second: '2-digit'
+                      })}
+                    </span>
+                    <span className={`shot-status ${shot.isValid ? 'valid' : 'invalid'}`}>
+                      {shot.isValid ? 'Valid' : 'Invalid'}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
