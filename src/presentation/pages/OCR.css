@@ -332,14 +332,73 @@
 
 /* ========== DETAILS SECTION ========== */
 
-.ocr-details {
+/* Tabla estilo Apple */
+.apple-table {
   margin-top: var(--spacing-xl);
   padding-top: var(--spacing-xl);
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.05);
-  padding: var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-xl);
+  overflow: hidden;
   backdrop-filter: blur(10px);
+}
+
+.apple-table-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background var(--transition-base);
+}
+
+.apple-table-row:last-child {
+  border-bottom: none;
+}
+
+.apple-table-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.apple-table-cell {
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-md);
+  color: white;
+}
+
+.apple-table-header {
+  font-weight: var(--font-weight-semibold);
+  opacity: var(--opacity-hover);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wider);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.validation-badge {
+  padding: var(--spacing-xs) var(--spacing-base);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wider);
+}
+
+.validation-badge.valid {
+  background: rgba(52, 199, 89, 0.2);
+  color: #34c759;
+  border: 1px solid rgba(52, 199, 89, 0.4);
+}
+
+.validation-badge.invalid {
+  background: rgba(255, 69, 58, 0.2);
+  color: #ff453a;
+  border: 1px solid rgba(255, 69, 58, 0.4);
+}
+
+/* Legacy styles - mantener por compatibilidad */
+.ocr-details {
+  display: none;
 }
 
 .ocr-detail-row {
@@ -372,8 +431,8 @@
 }
 
 .ocr-api-status {
-  font-size: var(--font-size-sm);
-  opacity: 0.75;
+  font-size: var(--font-size-xs);
+  opacity: 0.85;
   font-weight: var(--font-weight-normal);
 }
 
@@ -385,12 +444,16 @@
   padding: var(--spacing-xl);
   box-shadow: var(--shadow-sm);
   border: var(--border-thin) solid var(--color-gray-200);
-  margin-bottom: var(--spacing-xl);
+}
+
+/* Shot history abajo del contenedor de imagen */
+.shot-history-bottom {
+  margin-top: var(--spacing-xl);
+  margin-bottom: 0;
 }
 
 .shot-history-top {
-  margin-top: 0;
-  margin-bottom: var(--spacing-xl);
+  display: none; /* Ya no se usa arriba */
 }
 
 .shot-history-header {

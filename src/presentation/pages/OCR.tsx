@@ -26,7 +26,7 @@ export const OCR = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoadingImages, setIsLoadingImages] = useState(true);
   const [lastShotTime, setLastShotTime] = useState<string | null>(null);
-  const [autoChangeEnabled, setAutoChangeEnabled] = useState(true);
+  const [autoChangeEnabled, setAutoChangeEnabled] = useState(false);
   const [shotHistory, setShotHistory] = useState<ShotHistory[]>([]);
   const [progress, setProgress] = useState<number>(0);
 
@@ -223,50 +223,6 @@ export const OCR = () => {
           </div>
         </div>
 
-        {/* Historial de Shots en la parte superior */}
-        {shotHistory.length > 0 && (
-          <div className="shot-history shot-history-top">
-            <div className="shot-history-header">
-              <h3 className="shot-history-title">Shot History ({shotHistory.length})</h3>
-              <button 
-                onClick={() => setShotHistory([])} 
-                className="clear-history-btn"
-                title="Clear history"
-              >
-                Clear All
-              </button>
-            </div>
-            <div className="shot-history-grid">
-              {shotHistory.map((shot) => (
-                <div key={shot.id} className="shot-history-item">
-                  <div className="shot-thumbnail">
-                    <img
-                      src={getImageUrl(shot.imageName)}
-                      alt={shot.plateNumber}
-                      className="shot-thumbnail-img"
-                    />
-                    <div className="shot-overlay">
-                      <span className="shot-plate">{shot.plateNumber}</span>
-                    </div>
-                  </div>
-                  <div className="shot-info">
-                    <span className="shot-time">
-                      {new Date(shot.timestamp).toLocaleTimeString('es-ES', {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        second: '2-digit'
-                      })}
-                    </span>
-                    <span className={`shot-status ${shot.isValid ? 'valid' : 'invalid'}`}>
-                      {shot.isValid ? 'Valid' : 'Invalid'}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         <div className="ocr-card">
           {/* Info de imagen actual */}
           <div className="ocr-image-info">
@@ -324,6 +280,50 @@ export const OCR = () => {
                   Siguiente →
                 </button>
               </div>
+
+              {/* Historial de Shots debajo del contenedor de imagen */}
+              {shotHistory.length > 0 && (
+                <div className="shot-history shot-history-bottom">
+                  <div className="shot-history-header">
+                    <h3 className="shot-history-title">Shot History ({shotHistory.length})</h3>
+                    <button 
+                      onClick={() => setShotHistory([])} 
+                      className="clear-history-btn"
+                      title="Clear history"
+                    >
+                      Clear All
+                    </button>
+                  </div>
+                  <div className="shot-history-grid">
+                    {shotHistory.map((shot) => (
+                      <div key={shot.id} className="shot-history-item">
+                        <div className="shot-thumbnail">
+                          <img
+                            src={getImageUrl(shot.imageName)}
+                            alt={shot.plateNumber}
+                            className="shot-thumbnail-img"
+                          />
+                          <div className="shot-overlay">
+                            <span className="shot-plate">{shot.plateNumber}</span>
+                          </div>
+                        </div>
+                        <div className="shot-info">
+                          <span className="shot-time">
+                            {new Date(shot.timestamp).toLocaleTimeString('es-ES', {
+                              hour: '2-digit',
+                              minute: '2-digit',
+                              second: '2-digit'
+                            })}
+                          </span>
+                          <span className={`shot-status ${shot.isValid ? 'valid' : 'invalid'}`}>
+                            {shot.isValid ? 'Valid' : 'Invalid'}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Panel lateral derecho con información */}
@@ -333,33 +333,37 @@ export const OCR = () => {
                   <p className="ocr-result-label">{t.ocrResult}</p>
                   <p className="ocr-result-value">{plateResult}</p>
                   
-                  {/* Información adicional */}
-                  <div className="ocr-details">
-                    <div className="ocr-detail-row">
-                      <span className="ocr-detail-label">Image</span>
-                      <span className="ocr-detail-value">{detailedResult.image_name}</span>
+                  {/* Tabla formal estilo Apple */}
+                  <div className="apple-table">
+                    <div className="apple-table-row">
+                      <div className="apple-table-cell apple-table-header">Image</div>
+                      <div className="apple-table-cell">{detailedResult.image_name}</div>
                     </div>
-                    <div className="ocr-detail-row">
-                      <span className="ocr-detail-label">Characters</span>
-                      <span className="ocr-detail-value">{detailedResult.num_characters}</span>
+                    <div className="apple-table-row">
+                      <div className="apple-table-cell apple-table-header">Characters</div>
+                      <div className="apple-table-cell">{detailedResult.num_characters}</div>
                     </div>
-                    <div className="ocr-detail-row">
-                      <span className="ocr-detail-label">Validation</span>
-                      <span className="ocr-detail-value">{detailedResult.is_valid ? 'Valid' : 'Invalid'}</span>
-                    </div>
-                    {lastShotTime && (
-                      <div className="ocr-detail-row">
-                        <span className="ocr-detail-label">Timestamp</span>
-                        <span className="ocr-detail-value">
-                          {new Date(lastShotTime).toLocaleString('es-ES')}
+                    <div className="apple-table-row">
+                      <div className="apple-table-cell apple-table-header">Validation</div>
+                      <div className="apple-table-cell">
+                        <span className={`validation-badge ${detailedResult.is_valid ? 'valid' : 'invalid'}`}>
+                          {detailedResult.is_valid ? 'Valid' : 'Invalid'}
                         </span>
                       </div>
+                    </div>
+                    {lastShotTime && (
+                      <div className="apple-table-row">
+                        <div className="apple-table-cell apple-table-header">Timestamp</div>
+                        <div className="apple-table-cell">
+                          {new Date(lastShotTime).toLocaleString('es-ES')}
+                        </div>
+                      </div>
                     )}
-                    <div className="ocr-detail-row">
-                      <span className="ocr-detail-label">External API</span>
-                      <span className="ocr-detail-value ocr-api-status">
+                    <div className="apple-table-row">
+                      <div className="apple-table-cell apple-table-header">External API</div>
+                      <div className="apple-table-cell ocr-api-status">
                         Sent to external-api.example.com
-                      </span>
+                      </div>
                     </div>
                   </div>
                 </div>
